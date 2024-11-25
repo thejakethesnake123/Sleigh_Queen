@@ -2,44 +2,29 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    // Array of z positions for the lanes
-    public float[] lanes = { 632f, 628.5f, 623.5f, 620f }; // Define these based on your scene
-    private int currentLane = 1; // Start at the second lane (index 1)
+    public float moveSpeed = 3;
+    public float leftRightSpeed = 4;
 
-    public float moveSpeed = 25f; // Speed of the movement to the lane
-
+  
     void Update()
     {
-        // Check for input to move left or right
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        transform.Translate(Vector3.forward * Time.deltaTime * moveSpeed, Space.World);
+
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
-            MoveLeft();
-        }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            MoveRight();
+            if (this.gameObject.transform.position.x > LevelBoundary.leftSide)
+            {
+                transform.Translate(Vector3.left * Time.deltaTime * leftRightSpeed);
+            }
+
         }
 
-        // Smoothly move towards the target position
-        Vector3 targetPosition = new Vector3(transform.position.x, transform.position.y, lanes[currentLane]);
-        transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
-    }
-
-    void MoveLeft()
-    {
-        // Move left if not in the leftmost lane
-        if (currentLane > 0)
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
-            currentLane--;
-        }
-    }
-
-    void MoveRight()
-    {
-        // Move right if not in the rightmost lane
-        if (currentLane < lanes.Length - 1)
-        {
-            currentLane++;
+            if (this.gameObject.transform.position.x < LevelBoundary.rightSide)
+            {
+                transform.Translate(Vector3.left * Time.deltaTime * leftRightSpeed * -1);
+            }
         }
     }
 }
