@@ -1249,7 +1249,7 @@ GameObject:
   - component: {fileID: 1585016531}
   - component: {fileID: 1585016535}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Nick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1355,7 +1355,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1585016530}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0620d4acd8511147a6abe52ebaef501, type: 3}
+  m_Script: {fileID: 11500000, guid: ed1af60632bb461458db6c037b899835, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   lanes:
