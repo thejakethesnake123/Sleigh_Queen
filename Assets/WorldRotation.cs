@@ -10,6 +10,6 @@ public class WorldRotation : MonoBehaviour
     {
         float rotationAmount = rotationSpeed * Time.deltaTime;
 
-        transform.Rotate(0f, rotationAmount, 0f);
+        transform.Rotate(0f, 0f, rotationAmount);
     }
 }
