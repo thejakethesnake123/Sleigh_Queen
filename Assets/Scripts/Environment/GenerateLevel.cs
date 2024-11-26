@@ -6,7 +6,7 @@ using UnityEngine;
 public class NewMonoBehaviourScript : MonoBehaviour
 {
     public GameObject[] section;
-    public int zPos = 50;
+    public int zPos = 100;
     public bool creatingSection = false;
     public int secNum;
 
@@ -26,7 +26,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
     {
         secNum = Random.Range(0, 3);
         Instantiate(section[secNum], new Vector3 (0,0,zPos), Quaternion.identity);
-        zPos += 50;
+        zPos += 100;
         yield return new WaitForSeconds(2);
         creatingSection = false;
     }
