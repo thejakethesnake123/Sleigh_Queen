@@ -1,16 +1,14 @@
+using TMPro.Examples;
 using UnityEngine;
 
 public class ObstacleCollision : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public GameObject thePlayer;
 
-    // Update is called once per frame
-    void Update()
+    void OnTriggerEnter(Collider other)
     {
-        
+        Debug.Log("Enter");
+        this.gameObject.GetComponent<BoxCollider>().enabled = false;
+        GlobalMovement.canMove = false;
     }
 }

@@ -3,7 +3,6 @@ using UnityEngine;
 public class PlayerForwardMovement : MonoBehaviour
 {
     public float moveSpeed = 10f;
-    public bool playerMove = true;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -11,34 +10,22 @@ public class PlayerForwardMovement : MonoBehaviour
         
     }
 
-    void MoveSpeed()
-    {
-        if (playerMove == true)
-        {
-            moveSpeed = 10f;
-        }
-
-        if (playerMove == false)
-        {
-            moveSpeed = 0f;
-        }
-    }
-
     void PlayerPosition()
     {
-        if (transform.position == new Vector3(0f, 20.4f, 100f))
+        if (transform.position.z > 10000f)
         {
-            playerMove = false;
+            GlobalMovement.canMove = false;
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        MoveSpeed();
-
         PlayerPosition();
 
-        transform.Translate(Vector3.forward * Time.deltaTime * moveSpeed, Space.World);
+        if (GlobalMovement.canMove == true)
+        {
+            transform.Translate(Vector3.forward * Time.deltaTime * moveSpeed, Space.World);
+        }
     }
 }
