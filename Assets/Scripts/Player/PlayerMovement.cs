@@ -10,17 +10,18 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     { 
-
+        if (GlobalMovement.canMove == true)
+        { 
         // Check for input to move left or right
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            MoveLeft();
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                MoveLeft();
+            }
+            else if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                MoveRight();
+            }
         }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            MoveRight();
-        }
-
         // Smoothly move towards the target position
         Vector3 targetPosition = new Vector3(lanes[currentLane], transform.position.y, transform.position.z);
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, leftRightSpeed * Time.deltaTime);
