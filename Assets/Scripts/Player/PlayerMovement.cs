@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
     public float[] lanes = { -15f, -5f, 5f, 15f }; // Define these based on your scene
     private int currentLane = 1; // Start at the second lane (index 1)
     public float leftRightSpeed = 20f; // Speed of the movement to the lane
+    
 
     void Update()
     { 
