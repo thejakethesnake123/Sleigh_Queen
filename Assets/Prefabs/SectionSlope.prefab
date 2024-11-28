@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7960147816853597174}
   - component: {fileID: -991572414189838227}
   m_Layer: 3
-  m_Name: SectionFloor
+  m_Name: SectionSlope
   m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

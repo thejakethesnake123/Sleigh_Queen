@@ -25,7 +25,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
     IEnumerator GenerateSection()
     {
-        secNum = Random.Range(0, 3);
+        secNum = Random.Range(0, 4);
         Instantiate(section[secNum], new Vector3 (0,0,zPos), Quaternion.identity);
         zPos += 50 * zCount;
         yield return new WaitForSeconds(2);
