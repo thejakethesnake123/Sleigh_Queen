@@ -1,22 +1,19 @@
-using TMPro.Examples;
 using UnityEngine;
 
 public class ChimneyCollision : MonoBehaviour
 {
-    public int chimneysHit = 0;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public static int chimneysHit = 0;
+
+    void OnTriggerEnter(Collider other)
     {
-        Debug.Log(chimneysHit);
-    }
-    private void OnCollisionEnter(Collision collision)
-    {
-        // Check if the object collided with has the "Player" tag
-        if (collision.gameObject.CompareTag("Finish"))
+        // Check if the object collided with has the "Finish" tag
+        if (other.tag == "Finish")
         {
-            Destroy(gameObject);
-            chimneysHit = chimneysHit + 1;
+            chimneysHit += 1;
+            GlobalMovement.localScore += 10;
             Debug.Log("You have hit " + chimneysHit + " chimneys.");
+            Debug.Log("Local score: " + GlobalMovement.localScore + "");
+            Debug.Log("Highscore: " + GlobalMovement.highScore + "");
         }
     }
 }
