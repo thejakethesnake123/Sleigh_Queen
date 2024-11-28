@@ -6,6 +6,13 @@ public class ObstacleCollision : MonoBehaviour
     public AudioSource crashThud;
     public GameObject mainCam;
     public GameObject levelControl;
+    //public Animator cameraAnimator;
+
+
+    void Start()
+    {
+        //cameraAnimator.SetBool("CamShake", false);
+    }
 
     //public GameObject charModel;
     GameObject rigidBody;
@@ -19,9 +26,11 @@ public class ObstacleCollision : MonoBehaviour
             crashThud.Play();
             levelControl.GetComponent<LevelDistance>().enabled = false;
             mainCam.GetComponent<Animator>().enabled = true;
+            levelControl.GetComponent<EndRunSequence>().enabled = true;
+            //cameraAnimator.SetBool("CamShake", true);
 
         }
-     
+
 
     }
 }
