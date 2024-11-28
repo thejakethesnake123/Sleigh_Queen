@@ -47,12 +47,11 @@ public class GiftSpawner : MonoBehaviour
         // Make sure the cube is no longer a child of the spawner
         droppedGift.transform.parent = null;
 
-    // Add any additional physics or interactions here if needed
+        // Add any additional physics or interactions here if needed
 
-        if (droppedGift.transform.position.y < 0.8f)
-        {
-            Destroy(droppedGift);
-        }
+
+        Destroy(droppedGift, 5f);
+        
     }
 
     private void AssignRandomMaterials(GameObject parentObject)

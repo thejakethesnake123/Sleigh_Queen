@@ -12,7 +12,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
     public int secNum;
 
 
- 
+
     // Update is called once per frame
     void Update()
     {
@@ -21,6 +21,9 @@ public class NewMonoBehaviourScript : MonoBehaviour
             creatingSection = true;
             StartCoroutine(GenerateSection());
         }
+
+        Destroy(section[secNum], 7f);
+
     }
 
     IEnumerator GenerateSection()
