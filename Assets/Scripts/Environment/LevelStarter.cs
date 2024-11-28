@@ -6,6 +6,7 @@ using TMPro;
 
 public class LevelStarter : MonoBehaviour
 {
+    //public GameObject mainCam;
     public GameObject countDown3;
     public GameObject countDown2;
     public GameObject countDown1;
@@ -15,6 +16,7 @@ public class LevelStarter : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        //mainCam.GetComponent<Animator>().enabled = true;
         StartCoroutine(CountSequence());
     }
 

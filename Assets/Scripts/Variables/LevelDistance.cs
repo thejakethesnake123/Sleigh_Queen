@@ -25,9 +25,9 @@ public class LevelDistance : MonoBehaviour
     {
         disRun += 1;
         //disDisplay.GetComponent<TextMeshProUGUI>().text = "" + disRun;
-        disDisplay.text = "" + disRun;
+        disDisplay.text = "" + disRun + GlobalMovement.localScore;
         disEndDisplay.text = "" + disRun;
-        yield return new WaitForSeconds(0.35f);
+        yield return new WaitForSeconds(0.5f);
         addingDis = false;
     }
 }
