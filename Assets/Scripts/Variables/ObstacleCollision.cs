@@ -3,13 +3,9 @@ using UnityEngine;
 public class ObstacleCollision : MonoBehaviour
 {
     public GameObject thePlayer;
-    //public bool isDead
-    //{ get
-    //    {
-    //        return Health == 0;
-    //    }
-    //}
-
+    public AudioSource crashThud;
+    public GameObject mainCam;
+    public GameObject levelControl;
 
     //public GameObject charModel;
     GameObject rigidBody;
@@ -20,19 +16,13 @@ public class ObstacleCollision : MonoBehaviour
         {
             GlobalMovement.canMove = false;
             //charModel.GetComponent<Animator>().Play("Death");
+            crashThud.Play();
+            levelControl.GetComponent<LevelDistance>().enabled = false;
+            mainCam.GetComponent<Animator>().enabled = true;
 
         }
+     
 
-
-        //if(isDead)
-        //{
-        //    _animator.SetTrigger("death");
-        //}
-        //Debug.Log("Enter");
-        //this.gameObject.GetComponent<BoxCollider>().enabled = false;
-        //thePlayer.GetComponent<PlayerMovement>().enabled = false;
-
-        //GlobalMovement.canMove = false;
     }
 }
 

@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 5193798658608535365}
   - component: {fileID: 8714659323540042287}
   - component: {fileID: 7960147816853597174}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SectionFloor
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -94,7 +94,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6361405339065867455}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 0e2d8db08e37787488267e0394240bdb, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
