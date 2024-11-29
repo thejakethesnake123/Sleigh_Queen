@@ -735,6 +735,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentName: 
+  Player: {fileID: 0}
 --- !u!1 &137957241
 GameObject:
   m_ObjectHideFlags: 0
@@ -912,6 +913,7 @@ MonoBehaviour:
   zCount: 4
   creatingSection: 0
   secNum: 0
+  player: {fileID: 192360376}
 --- !u!114 &165736942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3340,6 +3342,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentName: 
+  Player: {fileID: 0}
 --- !u!1001 &1701265212
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4464,6 +4467,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentName: 
+  Player: {fileID: 0}
 --- !u!4 &109839962243866662 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 238439194961328169, guid: bc988cc94fb736f4f821b15580ea16bd, type: 3}

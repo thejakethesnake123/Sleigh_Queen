@@ -13,13 +13,6 @@ public class Destroyer : MonoBehaviour
         StartCoroutine(DestroyClone());
     }
 
-    //void Update()
-    //{
-    //    if (Player.transform.position.z - transform.position.z > 100)
-    //    {
-    //        Destroy(Clone);
-    //    }
-    //}
 
     IEnumerator DestroyClone()
     {
