@@ -5,6 +5,7 @@ using UnityEngine;
 public class Destroyer : MonoBehaviour
 {
     public string parentName;
+    public GameObject Player;
 
     void Start()
     {
@@ -12,9 +13,17 @@ public class Destroyer : MonoBehaviour
         StartCoroutine(DestroyClone());
     }
 
+    void Update()
+    {
+        if (Player.transform.position.z - transform.position.z > 100)
+        {
+            Destroy(Clone);
+        }
+    }
+
     IEnumerator DestroyClone()
     {
-        yield return new WaitForSeconds(30);
+        yield return new WaitForSeconds(70);
         if (parentName == "Section(Clone)")
         {
             Destroy(gameObject);
