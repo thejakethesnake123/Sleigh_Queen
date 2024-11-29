@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8623955721276288256}
   - component: {fileID: 7505653966880019667}
   - component: {fileID: 2474890981614574490}
+  - component: {fileID: 8325722286610759267}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Floor
@@ -29,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -18, y: 51.7, z: 44.3}
-  m_LocalScale: {x: 15.1, y: 15.1, z: 15.1}
+  m_LocalScale: {x: 11.64, y: 11.64, z: 11.64}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 238439194961328169}
@@ -102,12 +103,28 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8325722286610759267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1383111750159848215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 296efe1f02a7627409628b116f9259c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thePlayer: {fileID: 0}
+  crashThud: {fileID: 0}
+  mainCam: {fileID: 0}
+  levelControl: {fileID: 0}
 --- !u!1 &1602124672802125156
 GameObject:
   m_ObjectHideFlags: 0
