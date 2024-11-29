@@ -11,9 +11,6 @@ public class AltLevelStarter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GlobalMovement.totalScore > GlobalMovement.highScore - 1)
-        {
-            GlobalMovement.highScore = GlobalMovement.totalScore;
-        }
+
     }
 }
