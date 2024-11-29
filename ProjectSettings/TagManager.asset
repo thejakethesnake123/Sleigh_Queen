@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Gift
   - Floor
+  - Teleport
   layers:
   - Default
   - TransparentFX
