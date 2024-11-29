@@ -22,8 +22,6 @@ public class NewMonoBehaviourScript : MonoBehaviour
             StartCoroutine(GenerateSection());
         }
 
-        Destroy(section[secNum], 7f);
-
     }
 
     IEnumerator GenerateSection()
