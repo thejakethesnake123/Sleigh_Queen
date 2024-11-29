@@ -21,18 +21,22 @@ public class LevelDistance : MonoBehaviour
     {
         int displayedScore = disRun + GlobalMovement.chimneyScore;
         GlobalMovement.totalScore = displayedScore;
-        disDisplay.text = "Score: " + displayedScore;
-        disEndDisplay.text = "Score: " + displayedScore;
         if (GlobalMovement.totalScore > GlobalMovement.highScore)
         {
             GlobalMovement.highScore = GlobalMovement.totalScore;
         }
-        highScoreCount.text = "Highscore: " + GlobalMovement.highScore;
 
-        if (addingDis == false)
+        disDisplay.text = "Score: " + displayedScore;
+        highScoreCount.text = "Highscore: " + GlobalMovement.highScore;
+        disEndDisplay.text = "Score: " + displayedScore;
+
+        if (GlobalMovement.canMove == true)
         {
-            addingDis = true;
-            StartCoroutine(AddingDis());
+            if (addingDis == false)
+            {
+                addingDis = true;
+                StartCoroutine(AddingDis());
+            }
         }
        
     }
