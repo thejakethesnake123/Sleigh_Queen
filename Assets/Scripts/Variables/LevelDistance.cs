@@ -8,8 +8,8 @@ public class LevelDistance : MonoBehaviour
     //public GameObject disDisplay;
     public TMP_Text disDisplay;
     public TMP_Text disEndDisplay;
-    public int disRun;
     public bool addingDis = false;
+    public int disRun = 0;
     
     void Update()
     {
@@ -24,10 +24,12 @@ public class LevelDistance : MonoBehaviour
     IEnumerator AddingDis()
     {
         disRun += 1;
+        int displayedScore = disRun + GlobalMovement.chimneyScore;
+        GlobalMovement.totalScore = displayedScore;
         //disDisplay.GetComponent<TextMeshProUGUI>().text = "" + disRun;
-        disDisplay.text = "" + disRun + GlobalMovement.localScore;
-        disEndDisplay.text = "" + disRun;
-        yield return new WaitForSeconds(0.5f);
+        disDisplay.text = "Score: " + displayedScore;
+        disEndDisplay.text = "Score: " + displayedScore;
+        yield return new WaitForSeconds(1f);
         addingDis = false;
     }
 }
