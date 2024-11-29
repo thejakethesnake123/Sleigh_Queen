@@ -27,7 +27,7 @@ public class Teleport1 : MonoBehaviour
         if (other.tag == "Player")
         {            
             //teleport.Play();
-            SceneManager.LoadScene(3);
+            SceneManager.LoadScene(0);
         }
 
 

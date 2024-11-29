@@ -13,17 +13,17 @@ public class Destroyer : MonoBehaviour
         StartCoroutine(DestroyClone());
     }
 
-    void Update()
-    {
-        if (Player.transform.position.z - transform.position.z > 100)
-        {
-            Destroy(Clone);
-        }
-    }
+    //void Update()
+    //{
+    //    if (Player.transform.position.z - transform.position.z > 100)
+    //    {
+    //        Destroy(Clone);
+    //    }
+    //}
 
     IEnumerator DestroyClone()
     {
-        yield return new WaitForSeconds(70);
+        yield return new WaitForSeconds(30);
         if (parentName == "Section(Clone)")
         {
             Destroy(gameObject);
