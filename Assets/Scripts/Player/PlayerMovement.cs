@@ -21,10 +21,22 @@ public class PlayerMovement : MonoBehaviour
             {
                 MoveRight();
             }
+
+            //else if (Input.GetKeyDown(Keycode.UpArrow))
+            //{
+            //    MoveUp();
+            //}
+
+            //else if (Input.GetKeyDown(Keycode.DownArrow))
+            //{
+            //    MoveDown();
+            //}
         }
         // Smoothly move towards the target position
         Vector3 targetPosition = new Vector3(lanes[currentLane], transform.position.y, transform.position.z);
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, leftRightSpeed * Time.deltaTime);
+
+        
     }
 
     void MoveLeft()
