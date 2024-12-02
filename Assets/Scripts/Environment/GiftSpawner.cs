@@ -38,9 +38,9 @@ public class GiftSpawner : MonoBehaviour
 
 
         // Randomize the scale values between 20 and 40
-        float randScaleX = Random.Range(1f, 3f);
-        float randScaleY = Random.Range(1f, 3f);
-        float randScaleZ = Random.Range(1f, 3f);
+        float randScaleX = Random.Range(0.3f, 0.5f);
+        float randScaleY = Random.Range(0.3f, 0.5f);
+        float randScaleZ = Random.Range(0.3f, 0.5f);
         droppedGift.transform.localScale = new Vector3(randScaleX, randScaleY, randScaleZ);
 
 

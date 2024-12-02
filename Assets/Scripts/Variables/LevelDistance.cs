@@ -8,15 +8,35 @@ public class LevelDistance : MonoBehaviour
     //public GameObject disDisplay;
     public TMP_Text disDisplay;
     public TMP_Text disEndDisplay;
-    public int disRun;
+    public TMP_Text highScoreCount;
     public bool addingDis = false;
+    public int disRun = 0;
+
+    void Start()
+    {
+        GlobalMovement.chimneyScore = 0;
+    }
     
     void Update()
     {
-        if (addingDis == false)
+        int displayedScore = disRun + GlobalMovement.chimneyScore;
+        GlobalMovement.totalScore = displayedScore;
+        if (GlobalMovement.totalScore > GlobalMovement.highScore)
         {
-            addingDis = true;
-            StartCoroutine(AddingDis());
+            GlobalMovement.highScore = GlobalMovement.totalScore;
+        }
+
+        disDisplay.text = "Score: " + displayedScore;
+        highScoreCount.text = "Highscore: " + GlobalMovement.highScore;
+        disEndDisplay.text = "Score: " + displayedScore;
+
+        if (GlobalMovement.canMove == true)
+        {
+            if (addingDis == false)
+            {
+                addingDis = true;
+                StartCoroutine(AddingDis());
+            }
         }
        
     }
@@ -25,9 +45,7 @@ public class LevelDistance : MonoBehaviour
     {
         disRun += 1;
         //disDisplay.GetComponent<TextMeshProUGUI>().text = "" + disRun;
-        disDisplay.text = "" + disRun;
-        disEndDisplay.text = "" + disRun;
-        yield return new WaitForSeconds(0.35f);
+        yield return new WaitForSeconds(1f);
         addingDis = false;
     }
 }

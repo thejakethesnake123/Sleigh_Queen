@@ -6,11 +6,12 @@ TagManager:
   tags:
   - Gift
   - Floor
+  - Teleport
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Terrain
   - Water
   - UI
   - 
