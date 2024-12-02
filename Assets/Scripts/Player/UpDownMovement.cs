@@ -31,13 +31,13 @@ public class UpDownMovement : MonoBehaviour
 
     void MoveUp()
     {
-        targetPositionY = transform.position.y + 7f;
+        targetPositionY = transform.position.y + 30f;
     }
 
 
     void MoveDown()
     {
 
-        targetPositionY = transform.position.y - 7f;
+        targetPositionY = transform.position.y - 30f;
     }
 }
