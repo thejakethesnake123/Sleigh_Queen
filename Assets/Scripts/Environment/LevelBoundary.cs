@@ -2,16 +2,22 @@ using UnityEngine;
 
 public class LevelBoundary : MonoBehaviour
 {
-    public static float leftSide = -3.46f; 
-    public static float rightSide = 3.41f;
-    public float internalRight;
-    public float internalLeft;
+    public static float leftSide; 
+    public static float rightSide;
+    public static float topSide;
+    public static float bottomSide;
+    public float internalLeft = -10f;
+    public float internalRight = 10f;
+    public float internalTop = 90f;
+    public float internalBottom = 5f;
 
-    // Update is called once per frame
-    void Update()
+
+    private void Update()
     {
-        internalLeft = leftSide;
-        internalRight = rightSide;
+        leftSide = internalLeft;
+        rightSide = internalRight;
+        topSide = internalTop;
+        bottomSide = internalBottom;
 
     }
 }

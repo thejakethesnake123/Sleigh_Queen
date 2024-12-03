@@ -1,5 +1,7 @@
+using UnityEngine;
 
-public static class GlobalMovement
+
+public class GlobalMovement : MonoBehaviour
 {
     public static bool canMove = false;
     public static int highScore;

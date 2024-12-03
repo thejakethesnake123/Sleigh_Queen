@@ -2,42 +2,32 @@ using UnityEngine;
 
 public class UpDownMovement : MonoBehaviour
 {
-    public float targetPositionY;
-    public Vector3 targetPosition;
-    public float upDownSpeed = 10f;
+    //public float targetPositionY;
+    //public Vector3 targetPosition;
+    public float upDownSpeed = 16f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (GlobalMovement.canMove == true)
         {
-            MoveUp();
+            if (Input.GetKey(KeyCode.DownArrow))
+            {
+                if (this.gameObject.transform.position.y < LevelBoundary.topSide)
+                {
+                    transform.Translate(Vector3.up * upDownSpeed * Time.deltaTime);
+                }
+            }
+        
+
+            else if (Input.GetKey(KeyCode.UpArrow))
+            {
+                if (this.gameObject.transform.position.y > LevelBoundary.bottomSide)
+                {
+                    transform.Translate(Vector3.down * upDownSpeed * Time.deltaTime);
+                }
+            }
         }
-
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            MoveDown();
-        }
-
-        targetPosition = new Vector3(transform.position.x, targetPositionY, transform.position.z);
-
-        transform.position = Vector3.MoveTowards(transform.position, targetPosition, upDownSpeed * Time.deltaTime);
-    }
-
-    void MoveUp()
-    {
-        targetPositionY = transform.position.y + 30f;
-    }
-
-
-    void MoveDown()
-    {
-
-        targetPositionY = transform.position.y - 30f;
     }
 }
