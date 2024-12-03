@@ -5,6 +5,7 @@ using TMPro;
 public class ChimneyCollision : MonoBehaviour
 {
     public GameObject ChimneyPoints;
+    
     //public Transform canvasTransform; // Reference to the Canvas transform
     void OnTriggerEnter(Collider other)
     {
@@ -12,8 +13,24 @@ public class ChimneyCollision : MonoBehaviour
         if (other.tag == "Finish")
         {
             GlobalMovement.chimneyScore += 10;
-            ChimneyPoints.SetActive(true);
+
+            if (ChimneyPoints != null)
+            {
+                ShowChimneyPoints();
+            }
+
+            void ShowChimneyPoints()
+            {
+                ChimneyPoints.SetActive(true);
+                Instantiate(ChimneyPoints, transform.position, Quaternion.identity, transform);
+            }
 
         }
+
+
+
+        
+
+        
     }
 }
