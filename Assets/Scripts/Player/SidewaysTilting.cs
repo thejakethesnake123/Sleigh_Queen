@@ -24,7 +24,7 @@ public class SidewaysTilting : MonoBehaviour
 
         if (velocity.magnitude > 0.01f) // Avoid tilting if the movement is negligible
         {
-            float tiltAngle = -velocity.x * tiltAngleFactor; // Calculate tilt angle based on X velocity
+            float tiltAngle = velocity.x * tiltAngleFactor; // Calculate tilt angle based on X velocity
             Quaternion tiltRotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, tiltAngle);
             targetRotation = tiltRotation; // Set the target rotation
         }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 
 public class LevelStarter : MonoBehaviour
@@ -46,5 +47,13 @@ public class LevelStarter : MonoBehaviour
         goFX.Play();
         GlobalMovement.canMove = true;
 
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene(1);
+        }
     }
 }
