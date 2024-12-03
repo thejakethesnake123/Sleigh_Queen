@@ -12,7 +12,7 @@ public class UpDownMovement : MonoBehaviour
     {
         if (GlobalMovement.canMove == true)
         {
-            if (Input.GetKey(KeyCode.DownArrow))
+            if (Input.GetKey(KeyCode.UpArrow))
             {
                 if (this.gameObject.transform.position.y < LevelBoundary.topSide)
                 {
@@ -21,7 +21,7 @@ public class UpDownMovement : MonoBehaviour
             }
         
 
-            else if (Input.GetKey(KeyCode.UpArrow))
+            else if (Input.GetKey(KeyCode.DownArrow))
             {
                 if (this.gameObject.transform.position.y > LevelBoundary.bottomSide)
                 {
