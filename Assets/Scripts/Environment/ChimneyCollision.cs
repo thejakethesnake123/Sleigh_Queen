@@ -12,8 +12,6 @@ public class ChimneyCollision : MonoBehaviour
         if (other.tag == "Finish")
         {
             GlobalMovement.chimneyScore += 10;
-            Debug.Log("Local score: " + GlobalMovement.chimneyScore + "");
-            Debug.Log("Highscore: " + GlobalMovement.highScore + "");
             ChimneyPoints.SetActive(true);
 
         }

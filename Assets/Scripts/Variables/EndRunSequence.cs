@@ -20,8 +20,8 @@ public class EndRunSequence : MonoBehaviour
         yield return new WaitForSeconds(1);
         liveDis.SetActive(false);
         endScreen.SetActive(true);
-        yield return new WaitForSeconds(4);
-        SceneManager.LoadScene(1);
+        yield return new WaitForSeconds(2);
+        SceneManager.LoadScene(3);
 
     }
 

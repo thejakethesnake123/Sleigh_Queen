@@ -17,21 +17,31 @@ public class LevelStarter : MonoBehaviour
     void Start()
     {
         //mainCam.GetComponent<Animator>().enabled = true;
-        StartCoroutine(CountSequence());
+        if (GlobalMovement.highScore == 0)
+        {
+            StartCoroutine(CountSequence());
+        }
+
+        else
+        {
+            goFX.Play();
+            GlobalMovement.canMove = true;
+        }
+
     }
 
     IEnumerator CountSequence()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0.5f);
         countDown3.SetActive(true);
         readyFX.Play();
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1f);
         countDown2.SetActive(true);
         readyFX.Play();
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1f);
         countDown1.SetActive(true);
         readyFX.Play();
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1f);
         countDownGo.SetActive(true);
         goFX.Play();
         GlobalMovement.canMove = true;
