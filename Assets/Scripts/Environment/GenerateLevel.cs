@@ -35,7 +35,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GlobalMovement.totalScore < nextLevelSpawner)
+        if (player.transform.position.z < 4000)
         {
             var lastClone = sectionInstances.Last();
             if (lastClone.transform.position.z - player.transform.position.z < spawnPoint)
