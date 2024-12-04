@@ -2,7 +2,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainMenuFunction : MonoBehaviour
+
+
 {
+    public AudioSource pressPlay;
     void Start()
     {
         
@@ -14,6 +17,7 @@ public class MainMenuFunction : MonoBehaviour
 
     public void PlayGame()
     {
+        pressPlay.Play();
         SceneManager.LoadScene(3);
     }
 
