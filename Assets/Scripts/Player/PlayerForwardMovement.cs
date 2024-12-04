@@ -13,7 +13,7 @@ public class PlayerForwardMovement : MonoBehaviour
 
     void PlayerPosition()
     {
-        accSpeed = moveSpeed + (transform.position.z / 40);
+        accSpeed = moveSpeed + (transform.position.z / 80);
     }
 
     // Update is called once per frame
