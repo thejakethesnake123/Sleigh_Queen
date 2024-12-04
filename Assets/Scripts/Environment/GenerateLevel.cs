@@ -18,6 +18,8 @@ public class NewMonoBehaviourScript : MonoBehaviour
     public int numOfCitySections = 6;
     public int numOfForestSections = 1;
     public int levelCount;
+    bool createdCitySection = false;
+    bool createdForestSection = false;
 
     public GameObject player; // Reference to the player transform
     private List<GameObject> iceSectionInstances = new List<GameObject>(); // List to store section instances
@@ -66,15 +68,17 @@ public class NewMonoBehaviourScript : MonoBehaviour
             }
         }
 
-        if (levelCount == 3)
+        else if (levelCount == 3)
         {
-            for (int m = 0; m < 4; m++)
+            if (createdCitySection == false)
             {
                 secNum = Random.Range(0, numOfCitySections);
                 GameObject newCitySection = Instantiate(citySection[secNum], new Vector3(0, 0, zPos), Quaternion.identity);
                 citySectionInstances.Add(newCitySection); // Add to the list
                 zPos += 50 * zCount;
+                createdCitySection = true;
             }
+    
 
             var lastCityClone = citySectionInstances.Last();
             if (lastCityClone.transform.position.z - player.transform.position.z < spawnPoint)
@@ -93,19 +97,27 @@ public class NewMonoBehaviourScript : MonoBehaviour
         //}
 
 
-        if (levelCount == 2)
+        else if (levelCount == 2)
         {
 
-            for (int n = 0; n < 4; n++)
+            if (createdForestSection == false)
             {
                 secNum = Random.Range(0, numOfForestSections);
                 GameObject newForestSection = Instantiate(forestSection[secNum], new Vector3(0, 0, zPos - 30), Quaternion.identity);
                 forestSectionInstances.Add(newForestSection); // Add to the list
                 zPos += 50 * zCount;
+                createdForestSection = true;
             }
 
+            var lastForestClone = forestSectionInstances.Last();
+            if (lastForestClone.transform.position.z - player.transform.position.z < spawnPoint)
+            {
+                secNum = Random.Range(0, numOfForestSections);
+                GameObject newForestSection = Instantiate(forestSection[secNum], new Vector3(0, 0, zPos), Quaternion.identity);
+                forestSectionInstances.Add(newForestSection); // Add to the list
+                zPos += 50 * zCount;
+            }
         }
-
 
         // Check and destroy sections if player is far enough ahead
         for (int l = iceSectionInstances.Count - 1; l >= 0; l--) // Iterate backward to safely remove items
