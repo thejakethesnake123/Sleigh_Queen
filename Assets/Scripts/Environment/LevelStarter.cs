@@ -20,6 +20,7 @@ public class LevelStarter : MonoBehaviour
         //mainCam.GetComponent<Animator>().enabled = true;
         if (GlobalMovement.highScore == 0)
         {
+            GlobalMovement.canMove = true;
             StartCoroutine(CountSequence());
         }
 
@@ -45,7 +46,6 @@ public class LevelStarter : MonoBehaviour
         yield return new WaitForSeconds(1f);
         countDownGo.SetActive(true);
         goFX.Play();
-        GlobalMovement.canMove = true;
 
     }
 
