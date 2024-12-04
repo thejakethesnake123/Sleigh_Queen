@@ -120,10 +120,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 296efe1f02a7627409628b116f9259c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thePlayer: {fileID: 0}
-  crashThud: {fileID: 0}
-  mainCam: {fileID: 0}
-  levelControl: {fileID: 0}
+  thePlayer: {fileID: 1270607030893092539, guid: 240b14a6f80409e45ad57acd7be90c0a, type: 3}
+  crashThud: {fileID: 2399557617665837066, guid: 3263961241711da4bb22f2f9fe8aba37, type: 3}
+  mainCam: {fileID: 8997985476152550686, guid: 88f723b3ae6c40b4a8a57d6c99571317, type: 3}
+  levelControl: {fileID: 3354284116863044254, guid: 70794d8f0219d4441a406f617f164b2c, type: 3}
 --- !u!54 &8110806759354392932
 Rigidbody:
   m_ObjectHideFlags: 0
