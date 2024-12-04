@@ -11,13 +11,14 @@ public class NewMonoBehaviourScript : MonoBehaviour
     //public GameObject endSection;
     public int zPos = 50;
     public int zCount = 1;
-    public bool creatingSection = false;
-    public int secNum;
+    int secNum;
     public int spawnPoint = 1500;
+    public int forestSpawnStart = 2000;
+    public int citySpawnStart = 4000;
     public int numOfIceSections = 6;
     public int numOfCitySections = 6;
     public int numOfForestSections = 1;
-    public int levelCount;
+    int levelCount;
     bool createdCitySection = false;
     bool createdForestSection = false;
 
@@ -41,17 +42,17 @@ public class NewMonoBehaviourScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player.transform.position.z < 500)
+        if (player.transform.position.z < forestSpawnStart)
         {
             levelCount = 1;
         }
 
-        if (player.transform.position.z > 500)
+        if (player.transform.position.z > forestSpawnStart)
         {
             levelCount = 2;
         }
 
-        if (player.transform.position.z > 1000)
+        if (player.transform.position.z > citySpawnStart)
         {
             levelCount = 3;
         }
