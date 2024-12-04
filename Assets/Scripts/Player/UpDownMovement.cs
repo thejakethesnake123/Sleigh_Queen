@@ -12,20 +12,24 @@ public class UpDownMovement : MonoBehaviour
     {
         if (GlobalMovement.canMove == true)
         {
-            if (Input.GetKey(KeyCode.UpArrow))
+            if (transform.position.z > 1000)
             {
-                if (this.gameObject.transform.position.y < LevelBoundary.topSide)
-                {
-                    transform.Translate(Vector3.up * upDownSpeed * Time.deltaTime);
-                }
-            }
-        
 
-            else if (Input.GetKey(KeyCode.DownArrow))
-            {
-                if (this.gameObject.transform.position.y > LevelBoundary.bottomSide)
+                if (Input.GetKey(KeyCode.UpArrow))
                 {
-                    transform.Translate(Vector3.down * upDownSpeed * Time.deltaTime);
+                    if (this.gameObject.transform.position.y < LevelBoundary.topSide)
+                    {
+                        transform.Translate(Vector3.up * upDownSpeed * Time.deltaTime);
+                    }
+                }
+
+
+                else if (Input.GetKey(KeyCode.DownArrow))
+                {
+                    if (this.gameObject.transform.position.y > LevelBoundary.bottomSide)
+                    {
+                        transform.Translate(Vector3.down * upDownSpeed * Time.deltaTime);
+                    }
                 }
             }
         }
