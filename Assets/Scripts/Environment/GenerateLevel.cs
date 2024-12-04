@@ -32,7 +32,6 @@ public class NewMonoBehaviourScript : MonoBehaviour
             GameObject newIceSection = Instantiate(iceSection[secNum], new Vector3(0, 0, zPos), Quaternion.identity);
             iceSectionInstances.Add(newIceSection); // Add to the list
             zPos += 80 * zCount;
-            i -= 1;
         }
 
     }
@@ -50,7 +49,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
             levelCount = 2;
         }
 
-        if (player.transform.position.z > 100)
+        if (player.transform.position.z > 1000)
         {
             levelCount = 3;
         }
@@ -69,7 +68,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
         if (levelCount == 3)
         {
-            for (int i = 0; i < 4; i++)
+            for (int m = 0; m < 4; m++)
             {
                 secNum = Random.Range(0, numOfCitySections);
                 GameObject newCitySection = Instantiate(citySection[secNum], new Vector3(0, 0, zPos), Quaternion.identity);
@@ -97,7 +96,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
         if (levelCount == 2)
         {
 
-            for (int i = 0; i < 4; i++)
+            for (int n = 0; n < 4; n++)
             {
                 secNum = Random.Range(0, numOfForestSections);
                 GameObject newForestSection = Instantiate(forestSection[secNum], new Vector3(0, 0, zPos - 30), Quaternion.identity);
