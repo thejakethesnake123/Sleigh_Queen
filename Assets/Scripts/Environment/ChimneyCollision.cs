@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 
@@ -21,7 +22,8 @@ public class ChimneyCollision : MonoBehaviour
 
             void ShowChimneyPoints()
             {
-                ChimneyPoints.SetActive(true);
+                //ChimneyPoints.SetActive(true);
+                Debug.Log("+10");
                 Instantiate(ChimneyPoints, transform.position, Quaternion.identity, transform);
             }
 
