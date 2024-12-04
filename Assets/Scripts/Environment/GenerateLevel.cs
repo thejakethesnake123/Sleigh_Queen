@@ -7,7 +7,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
 {
     public GameObject[] iceSection;
     public GameObject[] citySection;
-    public GameObject[] transitionSection;
+    public GameObject[] forestSection;
     //public GameObject endSection;
     public int zPos = 50;
     public int zCount = 1;
@@ -16,18 +16,17 @@ public class NewMonoBehaviourScript : MonoBehaviour
     public int spawnPoint = 1500;
     public int numOfIceSections = 6;
     public int numOfCitySections = 6;
-    public int numOfTransitionSections = 1;
+    public int numOfForestSections = 1;
     public int levelCount;
 
     public GameObject player; // Reference to the player transform
     private List<GameObject> iceSectionInstances = new List<GameObject>(); // List to store section instances
     private List<GameObject> citySectionInstances = new List<GameObject>();
-    private List<GameObject> transitionSectionInstances = new List<GameObject>();
+    private List<GameObject> forestSectionInstances = new List<GameObject>();
 
     private void Start()
     {
-        int i = 4;
-        while (i > 0)
+        for (int i = 0; i < 4; i++)
         {
             secNum = Random.Range(0, numOfIceSections);
             GameObject newIceSection = Instantiate(iceSection[secNum], new Vector3(0, 0, zPos), Quaternion.identity);
@@ -41,17 +40,17 @@ public class NewMonoBehaviourScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player.transform.position.z < 1000)
+        if (player.transform.position.z < 500)
         {
             levelCount = 1;
         }
 
-        if (player.transform.position.z > 1000)
+        if (player.transform.position.z > 500)
         {
             levelCount = 2;
         }
 
-        if (player.transform.position.z > 2000)
+        if (player.transform.position.z > 100)
         {
             levelCount = 3;
         }
@@ -70,14 +69,12 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
         if (levelCount == 3)
         {
-            int i = 4;
-            while (i > 0)
+            for (int i = 0; i < 4; i++)
             {
                 secNum = Random.Range(0, numOfCitySections);
                 GameObject newCitySection = Instantiate(citySection[secNum], new Vector3(0, 0, zPos), Quaternion.identity);
                 citySectionInstances.Add(newCitySection); // Add to the list
                 zPos += 50 * zCount;
-                i -= 1;
             }
 
             var lastCityClone = citySectionInstances.Last();
@@ -100,14 +97,12 @@ public class NewMonoBehaviourScript : MonoBehaviour
         if (levelCount == 2)
         {
 
-            int i = 1;
-            while (i > 0)
+            for (int i = 0; i < 4; i++)
             {
-                secNum = Random.Range(0, numOfTransitionSections);
-                GameObject newTransitionSection = Instantiate(transitionSection[secNum], new Vector3(0, 0, zPos - 30), Quaternion.identity);
-                transitionSectionInstances.Add(newTransitionSection); // Add to the list
+                secNum = Random.Range(0, numOfForestSections);
+                GameObject newForestSection = Instantiate(forestSection[secNum], new Vector3(0, 0, zPos - 30), Quaternion.identity);
+                forestSectionInstances.Add(newForestSection); // Add to the list
                 zPos += 50 * zCount;
-                i = i - 1;
             }
 
         }
@@ -134,13 +129,13 @@ public class NewMonoBehaviourScript : MonoBehaviour
             }
         }
 
-        for (int k = transitionSectionInstances.Count - 1; k >= 0; k--) // Iterate backward to safely remove items
+        for (int k = forestSectionInstances.Count - 1; k >= 0; k--) // Iterate backward to safely remove items
         {
-            GameObject destroyTransitionInstance = transitionSectionInstances[k];
-            if (player.transform.position.z > destroyTransitionInstance.transform.position.z + 200)
+            GameObject destroyForestInstance = forestSectionInstances[k];
+            if (player.transform.position.z > destroyForestInstance.transform.position.z + 200)
             {
-                Destroy(destroyTransitionInstance);
-                transitionSectionInstances.RemoveAt(k); // Remove from the list
+                Destroy(destroyForestInstance);
+                forestSectionInstances.RemoveAt(k); // Remove from the list
             }
         }
     }
