@@ -16363,6 +16363,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelControlScene
       objectReference: {fileID: 0}
+    - target: {fileID: 3413653910540830840, guid: 70794d8f0219d4441a406f617f164b2c, type: 3}
+      propertyPath: m_Name
+      value: CrashThudScene
+      objectReference: {fileID: 0}
     - target: {fileID: 4702876785371206792, guid: 70794d8f0219d4441a406f617f164b2c, type: 3}
       propertyPath: player
       value: 
@@ -21548,15 +21552,15 @@ PrefabInstance:
     - target: {fileID: 259694628574834263, guid: b9f4ea7a5fba65147ad8e10ace2aae11, type: 3}
       propertyPath: mainCam
       value: 
-      objectReference: {fileID: 8997985476152550686, guid: 88f723b3ae6c40b4a8a57d6c99571317, type: 3}
+      objectReference: {fileID: 1214801810469517456}
     - target: {fileID: 259694628574834263, guid: b9f4ea7a5fba65147ad8e10ace2aae11, type: 3}
       propertyPath: crashThud
       value: 
-      objectReference: {fileID: 2399557617665837066, guid: 3263961241711da4bb22f2f9fe8aba37, type: 3}
+      objectReference: {fileID: 643853736}
     - target: {fileID: 259694628574834263, guid: b9f4ea7a5fba65147ad8e10ace2aae11, type: 3}
       propertyPath: thePlayer
       value: 
-      objectReference: {fileID: 1270607030893092539, guid: 240b14a6f80409e45ad57acd7be90c0a, type: 3}
+      objectReference: {fileID: 3645825107720441489}
     - target: {fileID: 259694628574834263, guid: b9f4ea7a5fba65147ad8e10ace2aae11, type: 3}
       propertyPath: levelControl
       value: 
@@ -25200,11 +25204,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7646655443444818123, guid: 88f723b3ae6c40b4a8a57d6c99571317, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 12.989998
+      value: 12.93
       objectReference: {fileID: 0}
     - target: {fileID: 7646655443444818123, guid: 88f723b3ae6c40b4a8a57d6c99571317, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -33.75
+      value: -36.9
       objectReference: {fileID: 0}
     - target: {fileID: 7646655443444818123, guid: 88f723b3ae6c40b4a8a57d6c99571317, type: 3}
       propertyPath: m_LocalRotation.w
@@ -25240,7 +25244,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8997985476152550686, guid: 88f723b3ae6c40b4a8a57d6c99571317, type: 3}
       propertyPath: m_Name
-      value: Main Camera
+      value: MainCameraScene
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -25438,7 +25442,7 @@ PrefabInstance:
       objectReference: {fileID: 1937559449}
     - target: {fileID: 1270607030893092539, guid: 240b14a6f80409e45ad57acd7be90c0a, type: 3}
       propertyPath: m_Name
-      value: Player
+      value: PlayerScene
       objectReference: {fileID: 0}
     - target: {fileID: 8039453568167043820, guid: 240b14a6f80409e45ad57acd7be90c0a, type: 3}
       propertyPath: m_Size.x
@@ -25521,21 +25525,81 @@ PrefabInstance:
     m_TransformParent: {fileID: 6265463536593878087}
     m_Modifications:
     - target: {fileID: 492236186811846961, guid: 04f30608682034e4ea9d838787c1f963, type: 3}
+      propertyPath: mainCam
+      value: 
+      objectReference: {fileID: 1214801810469517456}
+    - target: {fileID: 492236186811846961, guid: 04f30608682034e4ea9d838787c1f963, type: 3}
+      propertyPath: crashThud
+      value: 
+      objectReference: {fileID: 643853736}
+    - target: {fileID: 492236186811846961, guid: 04f30608682034e4ea9d838787c1f963, type: 3}
+      propertyPath: thePlayer
+      value: 
+      objectReference: {fileID: 3645825107720441489}
+    - target: {fileID: 492236186811846961, guid: 04f30608682034e4ea9d838787c1f963, type: 3}
       propertyPath: levelControl
       value: 
       objectReference: {fileID: 1686596467}
+    - target: {fileID: 1790789001202540380, guid: 04f30608682034e4ea9d838787c1f963, type: 3}
+      propertyPath: mainCam
+      value: 
+      objectReference: {fileID: 1214801810469517456}
+    - target: {fileID: 1790789001202540380, guid: 04f30608682034e4ea9d838787c1f963, type: 3}
+      propertyPath: crashThud
+      value: 
+      objectReference: {fileID: 643853736}
+    - target: {fileID: 1790789001202540380, guid: 04f30608682034e4ea9d838787c1f963, type: 3}
+      propertyPath: thePlayer
+      value: 
+      objectReference: {fileID: 3645825107720441489}
     - target: {fileID: 1790789001202540380, guid: 04f30608682034e4ea9d838787c1f963, type: 3}
       propertyPath: levelControl
       value: 
       objectReference: {fileID: 1686596467}
     - target: {fileID: 3264094780060375597, guid: 04f30608682034e4ea9d838787c1f963, type: 3}
+      propertyPath: mainCam
+      value: 
+      objectReference: {fileID: 1214801810469517456}
+    - target: {fileID: 3264094780060375597, guid: 04f30608682034e4ea9d838787c1f963, type: 3}
+      propertyPath: crashThud
+      value: 
+      objectReference: {fileID: 643853736}
+    - target: {fileID: 3264094780060375597, guid: 04f30608682034e4ea9d838787c1f963, type: 3}
+      propertyPath: thePlayer
+      value: 
+      objectReference: {fileID: 3645825107720441489}
+    - target: {fileID: 3264094780060375597, guid: 04f30608682034e4ea9d838787c1f963, type: 3}
       propertyPath: levelControl
       value: 
       objectReference: {fileID: 1686596467}
     - target: {fileID: 4578337471203475686, guid: 04f30608682034e4ea9d838787c1f963, type: 3}
+      propertyPath: mainCam
+      value: 
+      objectReference: {fileID: 1214801810469517456}
+    - target: {fileID: 4578337471203475686, guid: 04f30608682034e4ea9d838787c1f963, type: 3}
+      propertyPath: crashThud
+      value: 
+      objectReference: {fileID: 643853736}
+    - target: {fileID: 4578337471203475686, guid: 04f30608682034e4ea9d838787c1f963, type: 3}
+      propertyPath: thePlayer
+      value: 
+      objectReference: {fileID: 3645825107720441489}
+    - target: {fileID: 4578337471203475686, guid: 04f30608682034e4ea9d838787c1f963, type: 3}
       propertyPath: levelControl
       value: 
       objectReference: {fileID: 1686596467}
+    - target: {fileID: 4784410527302752468, guid: 04f30608682034e4ea9d838787c1f963, type: 3}
+      propertyPath: mainCam
+      value: 
+      objectReference: {fileID: 1214801810469517456}
+    - target: {fileID: 4784410527302752468, guid: 04f30608682034e4ea9d838787c1f963, type: 3}
+      propertyPath: crashThud
+      value: 
+      objectReference: {fileID: 643853736}
+    - target: {fileID: 4784410527302752468, guid: 04f30608682034e4ea9d838787c1f963, type: 3}
+      propertyPath: thePlayer
+      value: 
+      objectReference: {fileID: 3645825107720441489}
     - target: {fileID: 4784410527302752468, guid: 04f30608682034e4ea9d838787c1f963, type: 3}
       propertyPath: levelControl
       value: 
@@ -25545,12 +25609,24 @@ PrefabInstance:
       value: treewithsnow (9)
       objectReference: {fileID: 0}
     - target: {fileID: 6511757898222578982, guid: 04f30608682034e4ea9d838787c1f963, type: 3}
+      propertyPath: mainCam
+      value: 
+      objectReference: {fileID: 1214801810469517456}
+    - target: {fileID: 6511757898222578982, guid: 04f30608682034e4ea9d838787c1f963, type: 3}
+      propertyPath: crashThud
+      value: 
+      objectReference: {fileID: 643853736}
+    - target: {fileID: 6511757898222578982, guid: 04f30608682034e4ea9d838787c1f963, type: 3}
+      propertyPath: thePlayer
+      value: 
+      objectReference: {fileID: 3645825107720441489}
+    - target: {fileID: 6511757898222578982, guid: 04f30608682034e4ea9d838787c1f963, type: 3}
       propertyPath: levelControl
       value: 
       objectReference: {fileID: 1686596467}
     - target: {fileID: 6772220821065068477, guid: 04f30608682034e4ea9d838787c1f963, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10
+      value: -22.5
       objectReference: {fileID: 0}
     - target: {fileID: 6772220821065068477, guid: 04f30608682034e4ea9d838787c1f963, type: 3}
       propertyPath: m_LocalPosition.y
@@ -25558,7 +25634,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6772220821065068477, guid: 04f30608682034e4ea9d838787c1f963, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 380
+      value: 29.3
       objectReference: {fileID: 0}
     - target: {fileID: 6772220821065068477, guid: 04f30608682034e4ea9d838787c1f963, type: 3}
       propertyPath: m_LocalRotation.w
