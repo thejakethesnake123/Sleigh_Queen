@@ -2,8 +2,11 @@ using UnityEngine;
 
 public class PlayerForwardMovement : MonoBehaviour
 {
-    public float moveSpeed = 10f;
-    public float accSpeed;
+    public int startSpeed = 25;
+
+    public int accSpeed = 50;
+
+    float moveSpeed;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -11,19 +14,19 @@ public class PlayerForwardMovement : MonoBehaviour
         
     }
 
-    void PlayerPosition()
+    void GoingFaster()
     {
-        accSpeed = moveSpeed + (transform.position.z / 80);
+        moveSpeed = startSpeed + (transform.position.z / accSpeed);
     }
 
     // Update is called once per frame
     void Update()
     {
-        PlayerPosition();
+        GoingFaster();
 
         if (GlobalMovement.canMove == true)
         {
-            transform.Translate(Vector3.forward * Time.deltaTime * accSpeed, Space.World);
+            transform.Translate(Vector3.forward * Time.deltaTime * moveSpeed, Space.World);
         }
     }
 }

@@ -45,6 +45,8 @@ public class NewMonoBehaviourScript : MonoBehaviour
         if (player.transform.position.z < forestSpawnStart)
         {
             levelCount = 1;
+            LevelBoundary.bottomSide = -80;
+            LevelBoundary.topSide = -65;
         }
 
         if (player.transform.position.z > forestSpawnStart)
@@ -55,6 +57,8 @@ public class NewMonoBehaviourScript : MonoBehaviour
         if (player.transform.position.z > citySpawnStart)
         {
             levelCount = 3;
+            LevelBoundary.bottomSide = -80;
+            LevelBoundary.topSide = 50;
         }
 
         if (levelCount == 1)
@@ -100,20 +104,23 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
         else if (levelCount == 2)
         {
-
+            int secNumTrans = 0;
             if (createdForestSection == false)
             {
-                secNum = Random.Range(0, numOfForestSections);
-                GameObject newForestSection = Instantiate(forestSection[secNum], new Vector3(0, 0, zPos - 30), Quaternion.identity);
+                GameObject newForestSection = Instantiate(forestSection[secNumTrans], new Vector3(0, 0, zPos - 30), Quaternion.identity);
                 forestSectionInstances.Add(newForestSection); // Add to the list
                 zPos += 50 * zCount;
-                createdForestSection = true;
+                secNumTrans++;
+                if (secNumTrans > 3)
+                {
+                    createdForestSection = true;
+                }
             }
 
             var lastForestClone = forestSectionInstances.Last();
             if (lastForestClone.transform.position.z - player.transform.position.z < spawnPoint)
             {
-                secNum = Random.Range(0, numOfForestSections);
+                secNum = Random.Range(3, numOfForestSections);
                 GameObject newForestSection = Instantiate(forestSection[secNum], new Vector3(0, 0, zPos), Quaternion.identity);
                 forestSectionInstances.Add(newForestSection); // Add to the list
                 zPos += 50 * zCount;
