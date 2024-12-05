@@ -12,6 +12,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
     public int zPos = 50;
     public int zCount = 1;
     int secNum;
+    int secNumTrans;
     public int spawnPoint = 1500;
     public int forestSpawnStart = 2000;
     public int citySpawnStart = 4000;
@@ -21,6 +22,8 @@ public class NewMonoBehaviourScript : MonoBehaviour
     int levelCount;
     bool createdCitySection = false;
     bool createdForestSection = false;
+    public GameObject levelBorder1;
+    public GameObject levelBorder2;
 
     public GameObject player; // Reference to the player transform
     private List<GameObject> iceSectionInstances = new List<GameObject>(); // List to store section instances
@@ -29,13 +32,17 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
     private void Start()
     {
-        for (int i = 0; i < 4; i++)
+        levelBorder1.transform.position = new Vector3(0, 0, 10000);
+        levelBorder2.transform.position = new Vector3(0, 0, 10000);
+
+        for (int i = 0; i < 1; i++)
         {
             secNum = Random.Range(0, numOfIceSections);
-            GameObject newIceSection = Instantiate(iceSection[secNum], new Vector3(0, 0, zPos), Quaternion.identity);
+            GameObject newIceSection = Instantiate(iceSection[secNum], new Vector3(0, 0, 1370), Quaternion.identity);
             iceSectionInstances.Add(newIceSection); // Add to the list
-            zPos += 80 * zCount;
+            zPos = 1370 + (80 * zCount);
         }
+
 
     }
 
@@ -44,11 +51,11 @@ public class NewMonoBehaviourScript : MonoBehaviour
     {
         if (GlobalMovement.endGame == false)
         {
+            
+            //spawn points for different level sections
             if (player.transform.position.z < forestSpawnStart)
             {
                 levelCount = 1;
-                LevelBoundary.bottomSide = -80;
-                LevelBoundary.topSide = -65;
             }
 
             if (player.transform.position.z > forestSpawnStart)
@@ -59,8 +66,26 @@ public class NewMonoBehaviourScript : MonoBehaviour
             if (player.transform.position.z > citySpawnStart)
             {
                 levelCount = 3;
+            }
+
+           
+            //set boundaries for up-down movement in different levels 
+            if (player.transform.position.z < levelBorder1.transform.position.z)
+            {
                 LevelBoundary.bottomSide = -80;
-                LevelBoundary.topSide = 50;
+                LevelBoundary.topSide = -65;
+            }
+
+            if (player.transform.position.z > levelBorder1.transform.position.z - 300)
+            {
+                LevelBoundary.bottomSide = -80;
+                LevelBoundary.topSide = 40;
+            }
+
+            if (player.transform.position.z > levelBorder2.transform.position.z - 300)
+            {
+                LevelBoundary.bottomSide = -80;
+                LevelBoundary.topSide = 110;
             }
 
             if (levelCount == 1)
@@ -71,7 +96,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
                     secNum = Random.Range(0, numOfIceSections);
                     GameObject newIceSection = Instantiate(iceSection[secNum], new Vector3(0, 0, zPos), Quaternion.identity);
                     iceSectionInstances.Add(newIceSection); // Add to the list
-                    zPos += 80 * zCount;
+                    zPos += 70 * zCount;
                 }
             }
 
@@ -79,6 +104,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
             {
                 if (createdCitySection == false)
                 {
+                    levelBorder2.transform.position = new Vector3(0, -30, zPos - 140);
                     secNum = Random.Range(0, numOfCitySections);
                     GameObject newCitySection = Instantiate(citySection[secNum], new Vector3(0, 0, zPos), Quaternion.identity);
                     citySectionInstances.Add(newCitySection); // Add to the list
@@ -106,17 +132,17 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
             else if (levelCount == 2)
             {
-                int secNumTrans = 0;
                 if (createdForestSection == false)
                 {
-                    GameObject newForestSection = Instantiate(forestSection[secNumTrans], new Vector3(0, 0, zPos - 30), Quaternion.identity);
-                    forestSectionInstances.Add(newForestSection); // Add to the list
-                    zPos += 50 * zCount;
-                    secNumTrans = 3;
-                    if (secNumTrans > 3)
+                    levelBorder1.transform.position = new Vector3(0, -70, zPos - 100);
+                    for (int i = 0; i < 3; i++)
                     {
-                        createdForestSection = true;
+                        GameObject newForestSection = Instantiate(forestSection[secNumTrans], new Vector3(0, 0, zPos), Quaternion.identity);
+                        forestSectionInstances.Add(newForestSection); // Add to the list
+                        zPos += 70 * zCount;
+                        secNumTrans++;
                     }
+                    createdForestSection = true;
                 }
 
                 var lastForestClone = forestSectionInstances.Last();
