@@ -6,7 +6,8 @@ using TMPro;
 public class ChimneyCollision : MonoBehaviour
 {
     public GameObject ChimneyPoints;
-    
+    public AudioSource yaySound;
+
     //public Transform canvasTransform; // Reference to the Canvas transform
     void OnTriggerEnter(Collider other)
     {
@@ -25,6 +26,8 @@ public class ChimneyCollision : MonoBehaviour
                 //ChimneyPoints.SetActive(true);
                 Debug.Log("+10");
                 Instantiate(ChimneyPoints, transform.position, Quaternion.identity, transform);
+                yaySound.Play();
+
             }
 
         }
