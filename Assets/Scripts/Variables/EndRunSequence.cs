@@ -20,7 +20,7 @@ public class EndRunSequence : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         liveDis.SetActive(false);
-        GameOver.Play();
+        //GameOver.Play();
 
         endScreen.SetActive(true);
         yield return new WaitForSeconds(2);
