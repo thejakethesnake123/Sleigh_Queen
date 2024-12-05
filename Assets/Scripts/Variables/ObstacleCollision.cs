@@ -7,7 +7,7 @@ public class ObstacleCollision : MonoBehaviour
     public GameObject mainCam;
     Animator m_Animator;
     public GameObject levelControl;
-    //public Animator cameraAnimator;
+    public Animator cameraAnimator;
 
 
     void Start()
