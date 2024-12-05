@@ -17,7 +17,7 @@ public class MainMenuFunction : MonoBehaviour
 
     public void PlayGame()
     {
-        pressPlay.Play();
+        //pressPlay.Play();
         SceneManager.LoadScene(3);
     }
 
