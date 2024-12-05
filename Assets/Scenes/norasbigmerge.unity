@@ -16962,10 +16962,18 @@ PrefabInstance:
       value: LevelControl (1)
       objectReference: {fileID: 0}
     - target: {fileID: 4702876785371206792, guid: 70794d8f0219d4441a406f617f164b2c, type: 3}
+      propertyPath: zPos
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 4702876785371206792, guid: 70794d8f0219d4441a406f617f164b2c, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 5174369391110561515}
     - target: {fileID: 4702876785371206792, guid: 70794d8f0219d4441a406f617f164b2c, type: 3}
+<<<<<<< HEAD
+      propertyPath: zCount
+      value: 10
+=======
       propertyPath: spawnPoint
       value: 1500
       objectReference: {fileID: 0}
@@ -16988,6 +16996,7 @@ PrefabInstance:
     - target: {fileID: 4702876785371206792, guid: 70794d8f0219d4441a406f617f164b2c, type: 3}
       propertyPath: forestSection.Array.size
       value: 6
+>>>>>>> parent of 124d6ae (Revert "Merge branch 'main' of https://github.com/thejakethesnake123/Sleigh_Queen")
       objectReference: {fileID: 0}
     - target: {fileID: 4702876785371206792, guid: 70794d8f0219d4441a406f617f164b2c, type: 3}
       propertyPath: 'iceSection.Array.data[0]'
