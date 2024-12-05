@@ -7,7 +7,7 @@ public class ObstacleCollision : MonoBehaviour
     public GameObject mainCam;
     Animator m_Animator;
     public GameObject levelControl;
-    //public Animator cameraAnimator;
+    public Animator cameraAnimator;
 
 
     void Start()
@@ -24,7 +24,6 @@ public class ObstacleCollision : MonoBehaviour
         if(other.tag == "Player")
         {
             GlobalMovement.canMove = false;
-            GlobalMovement.endGame = true;
             //charModel.GetComponent<Animator>().Play("Death");
             crashThud.Play();
             levelControl.GetComponent<LevelDistance>().enabled = false;
