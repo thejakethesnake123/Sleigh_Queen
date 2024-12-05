@@ -12,7 +12,6 @@ public class NewMonoBehaviourScript : MonoBehaviour
     public int zPos = 50;
     public int zCount = 1;
     int secNum;
-    int secNumTrans;
     public int spawnPoint = 1500;
     public int forestSpawnStart = 2000;
     public int citySpawnStart = 4000;
