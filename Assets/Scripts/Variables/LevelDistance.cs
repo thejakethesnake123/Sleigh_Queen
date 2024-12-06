@@ -26,9 +26,9 @@ public class LevelDistance : MonoBehaviour
             GlobalMovement.highScore = GlobalMovement.totalScore;
         }
 
-        disDisplay.text = "Score: " + displayedScore;
-        highScoreCount.text = "Highscore: " + GlobalMovement.highScore;
-        disEndDisplay.text = "Score: " + displayedScore;
+        disDisplay.text = "" + displayedScore;
+        highScoreCount.text = "" + GlobalMovement.highScore;
+        disEndDisplay.text = "" + displayedScore;
 
         if (GlobalMovement.canMove == true)
         {
