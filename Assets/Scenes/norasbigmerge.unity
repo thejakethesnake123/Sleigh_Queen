@@ -36808,7 +36808,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startSpeed: 25
-  accSpeed: 50
+  accFactorZ: 0.05
+  moveSpeed: 0
+  accFactorXY: 0.05
 --- !u!4 &6881622622619241314
 Transform:
   m_ObjectHideFlags: 0
@@ -37311,6 +37313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f65c4aa9fbdc71e4a83209a428742a92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseVerticalSpeed: 21
   upDownSpeed: 21
 --- !u!1 &9116767561213698475
 GameObject:
