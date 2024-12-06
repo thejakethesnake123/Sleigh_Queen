@@ -159,7 +159,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
             for (int l = iceSectionInstances.Count - 1; l >= 0; l--) // Iterate backward to safely remove items
             {
                 GameObject destroyIceInstance = iceSectionInstances[l];
-                if (player.transform.position.z > destroyIceInstance.transform.position.z + 200)
+                if (player.transform.position.z > destroyIceInstance.transform.position.z + 280)
                 {
                     Destroy(destroyIceInstance);
                     iceSectionInstances.RemoveAt(l); // Remove from the list
