@@ -2,9 +2,8 @@ using UnityEngine;
 
 public class UpDownMovement : MonoBehaviour
 {
-    //public float targetPositionY;
-    //public Vector3 targetPosition;
-    public float upDownSpeed = 16f;
+    public float baseVerticalSpeed = 21f;
+    public float upDownSpeed;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     // Update is called once per frame
@@ -12,7 +11,7 @@ public class UpDownMovement : MonoBehaviour
     {
         if (GlobalMovement.canMove == true)
         { 
-
+            upDownSpeed = baseVerticalSpeed + GlobalMovement.globalAcceleration;
             if (Input.GetKey(KeyCode.UpArrow))
             {
                 if (this.gameObject.transform.position.y < LevelBoundary.topSide)

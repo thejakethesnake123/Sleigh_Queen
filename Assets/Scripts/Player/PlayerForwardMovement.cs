@@ -17,6 +17,7 @@ public class PlayerForwardMovement : MonoBehaviour
     void GoingFaster()
     {
         moveSpeed = startSpeed + (transform.position.z / accSpeed);
+        GlobalMovement.globalAcceleration = moveSpeed / 50;
     }
 
     // Update is called once per frame

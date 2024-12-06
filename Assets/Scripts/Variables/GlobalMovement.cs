@@ -8,4 +8,5 @@ public class GlobalMovement : MonoBehaviour
     public static int totalScore;
     public static int chimneyScore = 0;
     public static bool endGame;
+    public static float globalAcceleration;
 }
