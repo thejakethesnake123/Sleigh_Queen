@@ -39358,7 +39358,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startSpeed: 25
-  accFactorZ: 0.05
+  accFactorZ: 0.03
   moveSpeed: 0
   accFactorXY: 0.05
 --- !u!4 &6881622622619241314
