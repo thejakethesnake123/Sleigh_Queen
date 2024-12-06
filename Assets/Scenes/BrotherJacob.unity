@@ -220,8 +220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   leftRightSpeed: 4
-  targetPositionX: 0
-  targetPosition: {x: 0, y: 0, z: 0}
+  baseHorizontalSpeed: 21
 --- !u!1 &148408676
 GameObject:
   m_ObjectHideFlags: 0
@@ -1668,7 +1667,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 296efe1f02a7627409628b116f9259c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thePlayer: {fileID: 1952172337}
   crashThud: {fileID: 0}
   mainCam: {fileID: 330585543}
   levelControl: {fileID: 0}
@@ -1810,7 +1808,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a9fc18ad8d0dc14282b148703ac4969, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startSpeed: 25
+  accFactorZ: 0.5
   moveSpeed: 15
+  accFactorXY: 1
 --- !u!1001 &986278852
 PrefabInstance:
   m_ObjectHideFlags: 0
