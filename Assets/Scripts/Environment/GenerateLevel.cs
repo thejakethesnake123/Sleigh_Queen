@@ -73,7 +73,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
             if (player.transform.position.z < levelBorder1.transform.position.z)
             {
                 LevelBoundary.bottomSide = -75;
-                LevelBoundary.topSide = -65;
+                LevelBoundary.topSide = -68;
             }
 
             if (player.transform.position.z > levelBorder1.transform.position.z - 300)
