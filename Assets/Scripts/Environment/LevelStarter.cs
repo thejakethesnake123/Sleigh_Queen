@@ -15,6 +15,7 @@ public class LevelStarter : MonoBehaviour
     public AudioSource readyFX;
     public AudioSource goFX;
     public GameObject levelControl;
+    public GameObject instructions;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -26,6 +27,7 @@ public class LevelStarter : MonoBehaviour
             GlobalMovement.canMove = true;
             GlobalMovement.endGame = false;
             StartCoroutine(CountSequence());
+            instructions.SetActive(true);
         }
 
 
@@ -34,24 +36,30 @@ public class LevelStarter : MonoBehaviour
             goFX.Play();
             GlobalMovement.canMove = true;
             GlobalMovement.endGame = false;
+            instructions.SetActive(false);
         }
 
     }
 
     IEnumerator CountSequence()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(2f);
         countDown3.SetActive(true);
         readyFX.Play();
         yield return new WaitForSeconds(1f);
+        countDown3.SetActive(false);
         countDown2.SetActive(true);
         readyFX.Play();
         yield return new WaitForSeconds(1f);
+        countDown2.SetActive(false);
         countDown1.SetActive(true);
         readyFX.Play();
         yield return new WaitForSeconds(1f);
+        countDown1.SetActive(false);
         countDownGo.SetActive(true);
         goFX.Play();
+        yield return new WaitForSeconds(2f);
+        countDownGo.SetActive(false);
 
     }
 

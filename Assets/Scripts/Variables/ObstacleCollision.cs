@@ -1,23 +1,20 @@
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class ObstacleCollision : MonoBehaviour
 {
-    public GameObject thePlayer;
+    //public GameObject thePlayer;
     public AudioSource crashThud;
     public GameObject mainCam;
     Animator m_Animator;
     public GameObject levelControl;
-    //public Animator cameraAnimator;
-
 
     void Start()
     {
         //cameraAnimator.SetBool("CamShake", false);
-        m_Animator = mainCam.gameObject.GetComponent<Animator>();
+        //m_Animator = mainCam.gameObject.GetComponent<Animator>();
     }
-
     //public GameObject charModel;
-    GameObject rigidBody;
 
     void OnTriggerEnter(Collider other)
     {
@@ -26,16 +23,27 @@ public class ObstacleCollision : MonoBehaviour
             GlobalMovement.canMove = false;
             GlobalMovement.endGame = true;
             //charModel.GetComponent<Animator>().Play("Death");
-            crashThud.Play();
-            levelControl.GetComponent<LevelDistance>().enabled = false;
+            if (crashThud != null)
+            {
+                crashThud.Play();
+            }
             //mainCam.GetComponent<Animator>().SetTrigger("CamShake");
-            m_Animator.SetTrigger("CamShake");
-            levelControl.GetComponent<EndRunSequence>().enabled = true;
-            //cameraAnimator.SetBool("CamShake", true);
+            if (mainCam != null)
+            {
+                m_Animator = mainCam.gameObject.GetComponent<Animator>();
+                m_Animator.SetTrigger("CamShake");
+            }
+            if (levelControl != null)
+            {
+                levelControl.GetComponent<LevelDistance>().enabled = false;
+                levelControl.GetComponent<EndRunSequence>().enabled = true;
+            }
 
+            else
+            {
+                SceneManager.LoadScene(3);
+            }
         }
-
-
     }
 }
 

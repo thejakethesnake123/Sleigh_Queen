@@ -9,7 +9,7 @@ public class LevelDistance : MonoBehaviour
     public TMP_Text disDisplay;
     public TMP_Text disEndDisplay;
     public TMP_Text highScoreCount;
-    bool addingDis = false;
+    public bool addingDis = false;
     public int disRun = 0;
 
     void Start()

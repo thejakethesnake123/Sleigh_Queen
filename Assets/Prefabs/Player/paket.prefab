@@ -80,9 +80,6 @@ PrefabInstance:
       addedObject: {fileID: 2652762862728444624}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ba22ef1c5c1b7d945950222148a234b0, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7514379666290516580}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ba22ef1c5c1b7d945950222148a234b0, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 243023060590526911}
   m_SourcePrefab: {fileID: 100100000, guid: ba22ef1c5c1b7d945950222148a234b0, type: 3}
 --- !u!1 &195402773967055070 stripped
@@ -138,19 +135,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3.03, y: 1.52, z: 2.47}
   m_Center: {x: 0, y: 1.19, z: 0}
---- !u!114 &7514379666290516580
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 195402773967055070}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b54a12572e1fe1f42b85ae0aae78e873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dropSpeed: 10
 --- !u!114 &243023060590526911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,3 +147,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac792615bf35f3c47a9fed54f456a43b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chimneyPoints: {fileID: 919132149155446097, guid: b3627ac35920085459e4877aec2cb6e7, type: 3}
+  yaySound: {fileID: 792487850018980204, guid: 8c6956fbd2c01804f8ada86d88a88735, type: 3}

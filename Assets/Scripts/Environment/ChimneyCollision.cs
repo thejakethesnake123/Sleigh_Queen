@@ -5,9 +5,15 @@ using TMPro;
 
 public class ChimneyCollision : MonoBehaviour
 {
-    public GameObject ChimneyPoints;
+    public GameObject chimneyPoints;
     public AudioSource yaySound;
+    public GameObject player;
+    float randPos;
 
+    private void Start()
+    {
+        randPos = Random.Range(-1f, 1f);
+    }
     //public Transform canvasTransform; // Reference to the Canvas transform
     void OnTriggerEnter(Collider other)
     {
@@ -16,26 +22,21 @@ public class ChimneyCollision : MonoBehaviour
         {
             GlobalMovement.chimneyScore += 10;
 
-            if (ChimneyPoints != null)
+            if (chimneyPoints != null)
             {
                 ShowChimneyPoints();
             }
-
-            void ShowChimneyPoints()
-            {
-                //ChimneyPoints.SetActive(true);
-                Debug.Log("+10");
-                Instantiate(ChimneyPoints, transform.position, Quaternion.identity, transform);
-                yaySound.Play();
-
-            }
-
         }
+    }
 
-
-
-        
-
-        
+    void ShowChimneyPoints()
+    {
+        chimneyPoints.SetActive(true);
+        GameObject pointClone = Instantiate(chimneyPoints, transform.position, Quaternion.identity, player.transform);
+        pointClone.transform.position = new Vector3(this.transform.position.x + randPos, player.transform.position.y - 10 + randPos, player.transform.position.z + 40 + randPos);
+        pointClone.transform.rotation = Quaternion.Euler(player.transform.rotation.x, 180, player.transform.rotation.z);
+        yaySound.Play();
+        Destroy(pointClone, 1f);
+        chimneyPoints.SetActive(false);
     }
 }
