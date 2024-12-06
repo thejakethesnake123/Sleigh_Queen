@@ -4,9 +4,13 @@ public class PlayerForwardMovement : MonoBehaviour
 {
     public int startSpeed = 25;
 
-    public int accSpeed = 50;
+    public float accFactorZ = 0.5f;
 
-    float moveSpeed;
+    public float moveSpeed;
+
+    public float accFactorXY = 1f;
+
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -16,8 +20,8 @@ public class PlayerForwardMovement : MonoBehaviour
 
     void GoingFaster()
     {
-        moveSpeed = startSpeed + (transform.position.z / accSpeed);
-        GlobalMovement.globalAcceleration = moveSpeed / 50;
+        moveSpeed = startSpeed + (transform.position.z * accFactorZ);
+        GlobalMovement.globalAcceleration = moveSpeed * accFactorXY;
     }
 
     // Update is called once per frame
