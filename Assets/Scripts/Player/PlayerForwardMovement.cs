@@ -24,9 +24,19 @@ public class PlayerForwardMovement : MonoBehaviour
         GlobalMovement.globalAcceleration = moveSpeed * accFactorXY;
     }
 
+    //void TakeOff()
+    //{
+    //    transform.Translate(Vector3.up * Time.deltaTime * moveSpeed, Space.World);
+    //}
+
     // Update is called once per frame
     void Update()
     {
+        //if (transform.position.y < -75)
+        //{
+        //    TakeOff();
+        //}
+
         GoingFaster();
 
         if (GlobalMovement.canMove == true)

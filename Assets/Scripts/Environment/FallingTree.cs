@@ -12,10 +12,16 @@ public class FallingTree : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transform.parent.position.z - player.transform.position.z < 180)
+        if (transform.parent.position.z - player.transform.position.z < 10)
         {
-            Quaternion targetRotation = Quaternion.Euler(0, 0, 90);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 20 * Time.deltaTime);
+            Quaternion targetRotation = Quaternion.Euler(0, 0, 70);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 1 * Time.deltaTime);
+        }
+
+        else
+        {
+            Quaternion targetRotation = Quaternion.Euler(0, 0, 0);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 1 * Time.deltaTime);
         }
     }
 }
