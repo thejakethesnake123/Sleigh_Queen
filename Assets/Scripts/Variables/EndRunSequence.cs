@@ -24,7 +24,7 @@ public class EndRunSequence : MonoBehaviour
 
         endScreen.SetActive(true);
         yield return new WaitForSeconds(2);
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(2);
 
     }
 

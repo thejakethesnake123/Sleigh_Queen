@@ -18,7 +18,7 @@ public class MainMenuFunction : MonoBehaviour
     public void PlayGame()
     {
         pressPlay.Play();
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(2);
     }
 
     void Awake()

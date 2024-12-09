@@ -6,14 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/BrotherJacob.unity
-    guid: a16707bc682142541b68eebf49dac4d4
+    path: Assets/Scenes/Cutscene.unity
+    guid: fedf3649352e88a43af155e03a278850
   - enabled: 1
     path: Assets/Scenes/StartScene.unity
     guid: 83c6006bbf3b7f147a0fc7ffba56c4a1
-  - enabled: 1
-    path: Assets/Scenes/TheNewBigMerge.unity
-    guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
     path: Assets/Scenes/norasbigmerge.unity
     guid: f252374b1d16aec4ebf2fbe0a0546974
