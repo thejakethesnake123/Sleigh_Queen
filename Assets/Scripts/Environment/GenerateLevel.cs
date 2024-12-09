@@ -38,9 +38,9 @@ public class NewMonoBehaviourScript : MonoBehaviour
         for (int i = 0; i < 1; i++)
         {
             secNum = Random.Range(0, numOfIceSections);
-            GameObject newIceSection = Instantiate(iceSection[secNum], new Vector3(0, 0, 800), Quaternion.identity);
+            GameObject newIceSection = Instantiate(iceSection[secNum], new Vector3(0, 0, 1330), Quaternion.identity);
             iceSectionInstances.Add(newIceSection); // Add to the list
-            zPos = 800 + (80 * zCount);
+            zPos = 1730;
         }
 
 
@@ -105,8 +105,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
                 if (createdCitySection == false)
                 {
                     levelBorder2.transform.position = new Vector3(0, 25, zPos - 240);
-                    secNum = Random.Range(0, numOfCitySections);
-                    GameObject newCitySection = Instantiate(citySection[secNum], new Vector3(0, 0, zPos), Quaternion.identity);
+                    GameObject newCitySection = Instantiate(citySection[0], new Vector3(0, 0, zPos), Quaternion.identity);
                     citySectionInstances.Add(newCitySection); // Add to the list
                     zPos += 50 * zCount;
                     createdCitySection = true;
@@ -116,7 +115,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
                 var lastCityClone = citySectionInstances.Last();
                 if (lastCityClone.transform.position.z - player.transform.position.z < spawnPoint)
                 {
-                    secNum = Random.Range(0, numOfCitySections);
+                    secNum = Random.Range(1, numOfCitySections);
                     GameObject newCitySection = Instantiate(citySection[secNum], new Vector3(0, 0, zPos), Quaternion.identity);
                     citySectionInstances.Add(newCitySection); // Add to the list
                     zPos += 50 * zCount;

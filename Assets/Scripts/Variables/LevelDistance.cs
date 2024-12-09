@@ -28,7 +28,7 @@ public class LevelDistance : MonoBehaviour
 
         disDisplay.text = "" + displayedScore;
         highScoreCount.text = "" + GlobalMovement.highScore;
-        disEndDisplay.text = "" + displayedScore;
+        disEndDisplay.text = "" + displayedScore + " points";
 
         if (GlobalMovement.canMove == true)
         {

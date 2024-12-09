@@ -16,6 +16,7 @@ public class LevelStarter : MonoBehaviour
     public AudioSource goFX;
     public GameObject levelControl;
     public GameObject instructions;
+    public GameObject player;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -24,6 +25,7 @@ public class LevelStarter : MonoBehaviour
         //mainCam.GetComponent<Animator>().enabled = true;
         if (GlobalMovement.highScore == 0)
         {
+            player.transform.position = new Vector3(0, -76, 0);
             GlobalMovement.canMove = true;
             GlobalMovement.endGame = false;
             StartCoroutine(CountSequence());
@@ -34,6 +36,7 @@ public class LevelStarter : MonoBehaviour
         else
         {
             goFX.Play();
+            player.transform.position = new Vector3(0, -76, 400);
             GlobalMovement.canMove = true;
             GlobalMovement.endGame = false;
             instructions.SetActive(false);
