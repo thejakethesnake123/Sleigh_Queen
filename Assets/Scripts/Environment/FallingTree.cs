@@ -3,25 +3,32 @@ using UnityEngine;
 public class FallingTree : MonoBehaviour
 {
     public GameObject player;
+    [SerializeField] int randLottery;
+    [SerializeField] int treeValue;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        randLottery = Random.Range(0, 3);
+        treeValue = Random.Range(0, 3);
     }
 
-    // Update is called once per frame
-    void Update()
+    void ToFallOrNotToFall()
     {
-        if (transform.parent.position.z - player.transform.position.z < 10)
+        if (transform.parent.position.z - player.transform.position.z < 30)
         {
-            Quaternion targetRotation = Quaternion.Euler(0, 0, 70);
+            Quaternion targetRotation = Quaternion.Euler(0, 0, 75);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 1 * Time.deltaTime);
         }
+    }
 
-        else
+
+// Update is called once per frame
+    void Update()
+    {
+
+        if (treeValue == randLottery)
         {
-            Quaternion targetRotation = Quaternion.Euler(0, 0, 0);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 1 * Time.deltaTime);
+            ToFallOrNotToFall();
         }
     }
 }

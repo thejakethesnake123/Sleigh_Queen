@@ -8,10 +8,10 @@ using UnityEngine.SceneManagement;
 public class LevelStarter : MonoBehaviour
 {
     //public GameObject mainCam;
-    public GameObject countDown3;
-    public GameObject countDown2;
-    public GameObject countDown1;
-    public GameObject countDownGo;
+    [SerializeField] GameObject countDown3;
+    [SerializeField] GameObject countDown2;
+    [SerializeField] GameObject countDown1;
+    [SerializeField] GameObject countDownGo;
     public AudioSource readyFX;
     public AudioSource goFX;
     public GameObject levelControl;

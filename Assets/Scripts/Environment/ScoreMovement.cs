@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ScoreMovement : MonoBehaviour
 {
-    public int moveSpeed = 5;
+    [SerializeField] int moveSpeed = 5;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     // Update is called once per frame

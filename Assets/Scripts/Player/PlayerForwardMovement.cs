@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class PlayerForwardMovement : MonoBehaviour
 {
-    public int startSpeed = 25;
+    [SerializeField] int startSpeed = 25;
 
-    public float accFactorZ = 0.5f;
+    [SerializeField] float accFactorZ = 0.5f;
 
-    public float moveSpeed;
+    [SerializeField] float moveSpeed;
 
-    public float accFactorXY = 1f;
+    [SerializeField] float accFactorXY = 1f;
 
 
 
