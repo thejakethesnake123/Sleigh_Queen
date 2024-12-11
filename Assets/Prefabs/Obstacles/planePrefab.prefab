@@ -560,6 +560,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: dae63b085fed1704ebbfe28fce4016c1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1399730098674244265}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: dae63b085fed1704ebbfe28fce4016c1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6713439594475989624}
     - targetCorrespondingSourceObject: {fileID: -7077192733516223481, guid: dae63b085fed1704ebbfe28fce4016c1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5786861033356173493}
@@ -660,4 +663,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89412d1517614544cbe6d189aa23c13f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: -7
+  moveSpeed: -8
+--- !u!114 &6713439594475989624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5982462676210720799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a43378b2cdd2baa4fadcb0a571a2a255, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  planeSound: {fileID: 0}
