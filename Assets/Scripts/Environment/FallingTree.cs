@@ -3,6 +3,7 @@ using UnityEngine;
 public class FallingTree : MonoBehaviour
 {
     public GameObject player;
+    public AudioSource treeFall;
     [SerializeField] int randLottery;
     [SerializeField] int treeValue;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -18,6 +19,9 @@ public class FallingTree : MonoBehaviour
         {
             Quaternion targetRotation = Quaternion.Euler(0, 0, 75);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 1 * Time.deltaTime);
+            treeFall.Play();
+
+
         }
     }
 
