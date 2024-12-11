@@ -17,9 +17,11 @@ public class FallingTree : MonoBehaviour
     {
         if (transform.parent.position.z - player.transform.position.z < 30)
         {
-            Quaternion targetRotation = Quaternion.Euler(0, 0, 75);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 1 * Time.deltaTime);
             treeFall.Play();
+            Quaternion targetRotation = Quaternion.Euler(0, 0, 75);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 1.2f * Time.deltaTime);
+            
+
 
 
         }
