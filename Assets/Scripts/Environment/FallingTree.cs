@@ -3,23 +3,29 @@ using UnityEngine;
 public class FallingTree : MonoBehaviour
 {
     public GameObject player;
-    public AudioSource treeFall;
+    [SerializeField] AudioSource treeFall;
     [SerializeField] int randLottery;
     [SerializeField] int treeValue;
+    bool soundPlayed;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         randLottery = Random.Range(1, 4);
         treeValue = Random.Range(1, 4);
+        soundPlayed = false;
     }
 
     void ToFallOrNotToFall()
     {
 
 
-        if (transform.parent.position.z - player.transform.position.z < 140)
+        if (transform.parent.position.z - player.transform.position.z < 80)
         {
-            treeFall.Play();
+            if (soundPlayed == false)
+            {
+                treeFall.Play();
+                soundPlayed = true;
+            }
         }
 
         if (transform.parent.position.z - player.transform.position.z < 40)
