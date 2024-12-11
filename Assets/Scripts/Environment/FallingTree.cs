@@ -9,21 +9,23 @@ public class FallingTree : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        randLottery = Random.Range(0, 3);
-        treeValue = Random.Range(0, 3);
+        randLottery = Random.Range(1, 4);
+        treeValue = Random.Range(1, 4);
     }
 
     void ToFallOrNotToFall()
     {
-        if (transform.parent.position.z - player.transform.position.z < 30)
+
+
+        if (transform.parent.position.z - player.transform.position.z < 140)
         {
             treeFall.Play();
+        }
+
+        if (transform.parent.position.z - player.transform.position.z < 40)
+        {
             Quaternion targetRotation = Quaternion.Euler(0, 0, 75);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 1.2f * Time.deltaTime);
-            
-
-
-
         }
     }
 

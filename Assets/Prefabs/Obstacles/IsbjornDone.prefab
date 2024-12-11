@@ -135,8 +135,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1.95, z: 3.43}
-  m_Center: {x: -3.25, y: 2.73, z: -4.42}
+  m_Size: {x: 1.04, y: 2.14, z: 3.43}
+  m_Center: {x: -3.25, y: 2.82, z: -4.42}
 --- !u!54 &3685399917298749965
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -176,7 +176,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 296efe1f02a7627409628b116f9259c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thePlayer: {fileID: 0}
   crashThud: {fileID: 0}
   mainCam: {fileID: 0}
   levelControl: {fileID: 0}
