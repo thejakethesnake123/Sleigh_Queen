@@ -17,10 +17,10 @@ public class LevelStarter : MonoBehaviour
     public GameObject levelControl;
     public GameObject instructions;
     public GameObject player;
+    public GameObject mainCam;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-       
         levelControl.GetComponent<EndRunSequence>().enabled = false;
         //mainCam.GetComponent<Animator>().enabled = true;
         if (GlobalMovement.highScore == 0)
@@ -28,18 +28,34 @@ public class LevelStarter : MonoBehaviour
             player.transform.position = new Vector3(0, -75, 0);
             GlobalMovement.canMove = true;
             GlobalMovement.endGame = false;
+            GlobalMovement.chimneyScore = 0;
+            GlobalMovement.disRun = 0;
+            mainCam.GetComponent<Animator>().enabled = true;
             StartCoroutine(CountSequence());
             instructions.SetActive(true);
         }
 
 
-        else
+        else if (GlobalMovement.paused == false || GlobalMovement.endGame == true)
         {
             goFX.Play();
             player.transform.position = new Vector3(0, -75, 400);
             GlobalMovement.canMove = true;
             GlobalMovement.endGame = false;
+            GlobalMovement.chimneyScore = 0;
+            GlobalMovement.disRun = 0;
+            mainCam.GetComponent<Animator>().enabled = true;
             instructions.SetActive(false);
+        }
+
+        else
+        {
+            goFX.Play();
+            player.transform.position = GlobalMovement.playerPos;
+            GlobalMovement.canMove = true;
+            GlobalMovement.endGame = false;
+            GlobalMovement.paused = false;
+            mainCam.GetComponent<Animator>().enabled = false;
         }
 
     }
@@ -70,7 +86,11 @@ public class LevelStarter : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            SceneManager.LoadScene(1);
+            GlobalMovement.playerPos = player.transform.position;
+            Time.timeScale = 0;
+            GlobalMovement.paused = true;
+            GlobalMovement.canMove = false;
+            SceneManager.LoadScene(0);
         }
     }
 }

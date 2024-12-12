@@ -12,7 +12,6 @@ public class NewMonoBehaviourScript : MonoBehaviour
     [SerializeField] int zPos = 50;
     [SerializeField] int zCount = 1;
     int secNum;
-    int secNumTrans;
     [SerializeField] int spawnPoint = 1500;
     [SerializeField] int forestSpawnStart = 2000;
     [SerializeField] int citySpawnStart = 4000;
@@ -22,18 +21,27 @@ public class NewMonoBehaviourScript : MonoBehaviour
     int levelCount;
     bool createdCitySection = false;
     bool createdForestSection = false;
-    public GameObject levelBorder1;
-    public GameObject levelBorder2;
+    [SerializeField] GameObject levelBorder1;
+    [SerializeField] GameObject levelBorder2;
+    [SerializeField] GameObject ice;
+    [SerializeField] GameObject forest;
+    [SerializeField] GameObject city;
 
-    public GameObject player; // Reference to the player transform
+
+    [SerializeField] GameObject player; // Reference to the player transform
     private List<GameObject> iceSectionInstances = new List<GameObject>(); // List to store section instances
     private List<GameObject> citySectionInstances = new List<GameObject>();
     private List<GameObject> forestSectionInstances = new List<GameObject>();
 
+    bool passedIce;
+    bool passedForest;
+    bool problemSolved;
+
     private void Start()
     {
-        levelBorder1.transform.position = new Vector3(0, 0, 10000);
-        levelBorder2.transform.position = new Vector3(0, 0, 10000);
+        GlobalMovement.leftSide = -27;
+        GlobalMovement.rightSide = 27;
+
 
         for (int i = 0; i < 1; i++)
         {
@@ -46,8 +54,22 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
     }
 
+    IEnumerator DeactivateIce()
+    {
+        yield return new WaitForSeconds(1);
+        ice.SetActive(false);
+        passedIce = true;
+    }
+
+    IEnumerator DeactivateForest()
+    {
+        yield return new WaitForSeconds(1);
+        forest.SetActive(false);
+        passedForest = true;
+    }
+
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (GlobalMovement.endGame == false)
         {
@@ -56,6 +78,18 @@ public class NewMonoBehaviourScript : MonoBehaviour
             if (player.transform.position.z < forestSpawnStart)
             {
                 levelCount = 1;
+
+                if (problemSolved == false)
+                { 
+                    ice.SetActive(true);
+                    passedIce = false;
+                    forest.SetActive(false);
+                    passedForest = false;
+                    city.SetActive(false);
+                    levelBorder1.transform.position = new Vector3(0, 0, 10000);
+                    levelBorder2.transform.position = new Vector3(0, 0, 10000);
+                    problemSolved = true;
+                }
             }
 
             if (player.transform.position.z > forestSpawnStart)
@@ -72,20 +106,38 @@ public class NewMonoBehaviourScript : MonoBehaviour
             //set boundaries for up-down movement in different levels 
             if (player.transform.position.z < levelBorder1.transform.position.z)
             {
-                LevelBoundary.bottomSide = -75;
-                LevelBoundary.topSide = -68;
+                GlobalMovement.bottomSide = -75;
+                GlobalMovement.topSide = -68;
             }
 
             if (player.transform.position.z > levelBorder1.transform.position.z - 300)
             {
-                LevelBoundary.bottomSide = -75;
-                LevelBoundary.topSide = 30;
+                GlobalMovement.bottomSide = -75;
+                GlobalMovement.topSide = 30;
+                if (passedIce == false)
+                {
+                    StartCoroutine(DeactivateIce());
+                }
             }
 
             if (player.transform.position.z > levelBorder2.transform.position.z - 300)
             {
-                LevelBoundary.bottomSide = -75;
-                LevelBoundary.topSide = 97;
+                GlobalMovement.bottomSide = -75;
+                GlobalMovement.topSide = 96;
+                if (passedForest == false)
+                {
+                    StartCoroutine(DeactivateForest());
+                }
+            }
+
+            if (citySectionInstances.Count == 0)
+            {
+                createdCitySection = false;
+            }
+
+            if (forestSectionInstances.Count == 0)
+            {
+                createdForestSection = false;
             }
 
             if (levelCount == 1)
@@ -102,6 +154,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
             else if (levelCount == 3)
             {
+                city.SetActive(true);
                 if (createdCitySection == false)
                 {
                     levelBorder2.transform.position = new Vector3(0, 25, zPos - 240);
@@ -111,14 +164,16 @@ public class NewMonoBehaviourScript : MonoBehaviour
                     createdCitySection = true;
                 }
 
-
-                var lastCityClone = citySectionInstances.Last();
-                if (lastCityClone.transform.position.z - player.transform.position.z < spawnPoint)
+                if (createdCitySection == true)
                 {
-                    secNum = Random.Range(1, numOfCitySections);
-                    GameObject newCitySection = Instantiate(citySection[secNum], new Vector3(0, 0, zPos), Quaternion.identity);
-                    citySectionInstances.Add(newCitySection); // Add to the list
-                    zPos += 50 * zCount;
+                    var lastCityClone = citySectionInstances.Last();
+                    if (lastCityClone.transform.position.z - player.transform.position.z < spawnPoint)
+                    {
+                        secNum = Random.Range(1, numOfCitySections);
+                        GameObject newCitySection = Instantiate(citySection[secNum], new Vector3(0, 0, zPos), Quaternion.identity);
+                        citySectionInstances.Add(newCitySection); // Add to the list
+                        zPos += 50 * zCount;
+                    }
                 }
             }
 
@@ -131,57 +186,63 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
             else if (levelCount == 2)
             {
+                forest.SetActive(true);
                 if (createdForestSection == false)
                 {
                     levelBorder1.transform.position = new Vector3(0, -70, zPos + 100);
+                    secNum = 0;
                     for (int i = 0; i < 3; i++)
                     {
-                        GameObject newForestSection = Instantiate(forestSection[secNumTrans], new Vector3(0, 0, zPos), Quaternion.identity);
+                        GameObject newForestSection = Instantiate(forestSection[secNum], new Vector3(0, 0, zPos), Quaternion.identity);
                         forestSectionInstances.Add(newForestSection); // Add to the list
                         zPos += 70 * zCount;
-                        secNumTrans++;
+                        secNum++;
                     }
                     createdForestSection = true;
                 }
 
-                var lastForestClone = forestSectionInstances.Last();
-                if (lastForestClone.transform.position.z - player.transform.position.z < spawnPoint)
+                if (createdForestSection == true)
                 {
-                    secNum = Random.Range(3, numOfForestSections);
-                    GameObject newForestSection = Instantiate(forestSection[secNum], new Vector3(0, 0, zPos), Quaternion.identity);
-                    forestSectionInstances.Add(newForestSection); // Add to the list
-                    zPos += 50 * zCount;
+                    var lastForestClone = forestSectionInstances.Last();
+                    if (lastForestClone.transform.position.z - player.transform.position.z < spawnPoint)
+                    {
+                        secNum = Random.Range(3, numOfForestSections);
+                        GameObject newForestSection = Instantiate(forestSection[secNum], new Vector3(0, 0, zPos), Quaternion.identity);
+                        forestSectionInstances.Add(newForestSection); // Add to the list
+                        zPos += 50 * zCount;
+                    }
                 }
+
             }
 
             // Check and destroy sections if player is far enough ahead
-            for (int l = iceSectionInstances.Count - 1; l >= 0; l--) // Iterate backward to safely remove items
+            for (int i = iceSectionInstances.Count - 1; i >= 0; i--) // Iterate backward to safely remove items
             {
-                GameObject destroyIceInstance = iceSectionInstances[l];
+                GameObject destroyIceInstance = iceSectionInstances[i];
                 if (player.transform.position.z > destroyIceInstance.transform.position.z + 280)
                 {
                     Destroy(destroyIceInstance);
-                    iceSectionInstances.RemoveAt(l); // Remove from the list
+                    iceSectionInstances.RemoveAt(i); // Remove from the list
                 }
             }
 
-            for (int j = citySectionInstances.Count - 1; j >= 0; j--) // Iterate backward to safely remove items
+            for (int i = citySectionInstances.Count - 1; i >= 0; i--) // Iterate backward to safely remove items
             {
-                GameObject destroyCityInstance = citySectionInstances[j];
+                GameObject destroyCityInstance = citySectionInstances[i];
                 if (player.transform.position.z > destroyCityInstance.transform.position.z + 200)
                 {
                     Destroy(destroyCityInstance);
-                    citySectionInstances.RemoveAt(j); // Remove from the list
+                    citySectionInstances.RemoveAt(i); // Remove from the list
                 }
             }
 
-            for (int k = forestSectionInstances.Count - 1; k >= 0; k--) // Iterate backward to safely remove items
+            for (int i = forestSectionInstances.Count - 1; i >= 0; i--) // Iterate backward to safely remove items
             {
-                GameObject destroyForestInstance = forestSectionInstances[k];
+                GameObject destroyForestInstance = forestSectionInstances[i];
                 if (player.transform.position.z > destroyForestInstance.transform.position.z + 200)
                 {
                     Destroy(destroyForestInstance);
-                    forestSectionInstances.RemoveAt(k); // Remove from the list
+                    forestSectionInstances.RemoveAt(i); // Remove from the list
                 }
             }
         }

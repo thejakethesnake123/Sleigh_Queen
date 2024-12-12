@@ -18,6 +18,6 @@ public class StartSceneEnter : MonoBehaviour
     void OnVideoEnd(VideoPlayer vp)
     {
         Debug.Log("Video finished! Loading next scene...");
-        SceneManager.LoadScene(1); // Replace "NextScene" with your scene's name
+        SceneManager.LoadScene(0); // Replace "NextScene" with your scene's name
     }
 }

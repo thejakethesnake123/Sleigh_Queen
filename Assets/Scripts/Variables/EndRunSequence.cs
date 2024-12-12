@@ -5,9 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class EndRunSequence : MonoBehaviour
 {
-    public GameObject liveDis;
-    public GameObject endScreen;
+    [SerializeField] GameObject liveDis;
+    [SerializeField] GameObject endScreen;
     public AudioSource GameOver;
+    [SerializeField] GameObject mainCam;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -19,12 +20,14 @@ public class EndRunSequence : MonoBehaviour
     IEnumerator EndSequence()
     {
         yield return new WaitForSeconds(1);
+        mainCam.GetComponent<Animator>().enabled = true;
         liveDis.SetActive(false);
         GameOver.Play();
 
         endScreen.SetActive(true);
         yield return new WaitForSeconds(2);
-        SceneManager.LoadScene(2);
+        GlobalMovement.paused = false;
+        SceneManager.LoadScene(1);
 
     }
 

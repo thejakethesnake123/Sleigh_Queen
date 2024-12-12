@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
             // Check for input to move left or right
             if (Input.GetKey(KeyCode.LeftArrow))
             {
-                if (this.gameObject.transform.position.x > LevelBoundary.leftSide)
+                if (this.gameObject.transform.position.x > GlobalMovement.leftSide)
                 {
 
                     {
@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
 
             else if (Input.GetKey(KeyCode.RightArrow))
             {
-                if (this.gameObject.transform.position.x < LevelBoundary.rightSide)
+                if (this.gameObject.transform.position.x < GlobalMovement.rightSide)
                 {
                     transform.Translate(Vector3.left * leftRightSpeed * Time.deltaTime);
                 }
