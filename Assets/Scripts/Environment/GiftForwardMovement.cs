@@ -24,7 +24,7 @@ public class GiftForwardMovement : MonoBehaviour
     {
         if (!touchGround)
         {
-            transform.Translate(Vector3.forward * Time.deltaTime * dropSpeed, Space.World);
+            transform.Translate(Vector3.down * Time.deltaTime * dropSpeed, Space.World);
         }
     }
 }

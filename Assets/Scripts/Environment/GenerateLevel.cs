@@ -229,7 +229,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
             for (int i = citySectionInstances.Count - 1; i >= 0; i--) // Iterate backward to safely remove items
             {
                 GameObject destroyCityInstance = citySectionInstances[i];
-                if (player.transform.position.z > destroyCityInstance.transform.position.z + 200)
+                if (player.transform.position.z > destroyCityInstance.transform.position.z + 350)
                 {
                     Destroy(destroyCityInstance);
                     citySectionInstances.RemoveAt(i); // Remove from the list
@@ -239,7 +239,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
             for (int i = forestSectionInstances.Count - 1; i >= 0; i--) // Iterate backward to safely remove items
             {
                 GameObject destroyForestInstance = forestSectionInstances[i];
-                if (player.transform.position.z > destroyForestInstance.transform.position.z + 200)
+                if (player.transform.position.z > destroyForestInstance.transform.position.z + 100)
                 {
                     Destroy(destroyForestInstance);
                     forestSectionInstances.RemoveAt(i); // Remove from the list

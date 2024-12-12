@@ -10,7 +10,9 @@ public class LevelDistance : MonoBehaviour
     public TMP_Text disEndDisplay;
     public TMP_Text highScoreCount;
     public bool addingDis = false;
-    
+    float scoreTime;
+
+
     void Update()
     {
         int displayedScore = GlobalMovement.disRun + GlobalMovement.chimneyScore;
@@ -39,7 +41,8 @@ public class LevelDistance : MonoBehaviour
     {
         GlobalMovement.disRun += 1;
         //disDisplay.GetComponent<TextMeshProUGUI>().text = "" + disRun;
-        yield return new WaitForSeconds(1f);
+        scoreTime = 1f - (GlobalMovement.globalAcceleration / 30f);
+        yield return new WaitForSeconds(scoreTime);
         addingDis = false;
     }
 }
