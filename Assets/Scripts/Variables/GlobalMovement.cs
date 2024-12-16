@@ -15,5 +15,6 @@ public class GlobalMovement : MonoBehaviour
     public static float topSide;
     public static float bottomSide;
     public static Vector3 playerPos;
+    public static Vector3 horizontalPos;
     public static bool paused;
 }

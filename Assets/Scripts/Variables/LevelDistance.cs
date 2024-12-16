@@ -6,10 +6,10 @@ using TMPro;
 public class LevelDistance : MonoBehaviour
 {
     //public GameObject disDisplay;
-    public TMP_Text disDisplay;
-    public TMP_Text disEndDisplay;
-    public TMP_Text highScoreCount;
-    public bool addingDis = false;
+    [SerializeField] TMP_Text disDisplay;
+    [SerializeField] TMP_Text disEndDisplay;
+    [SerializeField] TMP_Text highScoreCount;
+    bool addingDis = false;
     float scoreTime;
 
 

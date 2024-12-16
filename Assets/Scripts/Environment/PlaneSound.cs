@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlaneSound : MonoBehaviour
 {
-    public GameObject player;
+    [SerializeField] GameObject player;
     [SerializeField] AudioSource planeSound;
     [SerializeField] int planePositionX;
     [SerializeField] int planePositionY;

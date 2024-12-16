@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class MainMenuFunction : MonoBehaviour
 {
     [SerializeField] GameObject resumeButton;
-    public AudioSource pressPlay;
+    [SerializeField] AudioSource pressPlay;
     void Start()
     {
         if (GlobalMovement.paused == true)

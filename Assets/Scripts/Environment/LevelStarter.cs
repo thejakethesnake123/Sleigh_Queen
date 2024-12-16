@@ -12,12 +12,13 @@ public class LevelStarter : MonoBehaviour
     [SerializeField] GameObject countDown2;
     [SerializeField] GameObject countDown1;
     [SerializeField] GameObject countDownGo;
-    public AudioSource readyFX;
-    public AudioSource goFX;
-    public GameObject levelControl;
-    public GameObject instructions;
-    public GameObject player;
-    public GameObject mainCam;
+    [SerializeField] AudioSource readyFX;
+    [SerializeField] AudioSource goFX;
+    [SerializeField] GameObject levelControl;
+    [SerializeField] GameObject instructions;
+    [SerializeField] GameObject player;
+    [SerializeField] GameObject horizontalPlayer;
+    [SerializeField] GameObject mainCam;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -52,6 +53,7 @@ public class LevelStarter : MonoBehaviour
         {
             goFX.Play();
             player.transform.position = GlobalMovement.playerPos;
+            horizontalPlayer.transform.position = GlobalMovement.horizontalPos;
             GlobalMovement.canMove = true;
             GlobalMovement.endGame = false;
             GlobalMovement.paused = false;
@@ -87,6 +89,7 @@ public class LevelStarter : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             GlobalMovement.playerPos = player.transform.position;
+            GlobalMovement.horizontalPos = horizontalPlayer.transform.position;
             Time.timeScale = 0;
             GlobalMovement.paused = true;
             GlobalMovement.canMove = false;

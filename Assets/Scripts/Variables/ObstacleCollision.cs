@@ -4,10 +4,10 @@ using UnityEngine;
 public class ObstacleCollision : MonoBehaviour
 {
     //public GameObject thePlayer;
-    public AudioSource crashThud;
-    public GameObject mainCam;
+    [SerializeField] AudioSource crashThud;
+    [SerializeField] GameObject mainCam;
     Animator m_Animator;
-    public GameObject levelControl;
+    [SerializeField] GameObject levelControl;
 
     void Start()
     {

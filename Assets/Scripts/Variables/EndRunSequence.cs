@@ -7,7 +7,7 @@ public class EndRunSequence : MonoBehaviour
 {
     [SerializeField] GameObject liveDis;
     [SerializeField] GameObject endScreen;
-    public AudioSource GameOver;
+    [SerializeField] AudioSource GameOver;
     [SerializeField] GameObject mainCam;
 
 

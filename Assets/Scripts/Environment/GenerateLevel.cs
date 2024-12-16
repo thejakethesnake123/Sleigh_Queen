@@ -5,19 +5,14 @@ using UnityEngine;
 
 public class NewMonoBehaviourScript : MonoBehaviour
 {
-    public GameObject[] iceSection;
-    public GameObject[] citySection;
-    public GameObject[] forestSection;
-    //public GameObject endSection;
-    [SerializeField] int zPos = 50;
-    [SerializeField] int zCount = 1;
+    [SerializeField] GameObject[] iceSection;
+    [SerializeField] GameObject[] citySection;
+    [SerializeField] GameObject[] forestSection;
+    int zPos;
     int secNum;
     [SerializeField] int spawnPoint = 1500;
     [SerializeField] int forestSpawnStart = 2000;
     [SerializeField] int citySpawnStart = 4000;
-    [SerializeField] int numOfIceSections = 6;
-    [SerializeField] int numOfCitySections = 6;
-    [SerializeField] int numOfForestSections = 1;
     int levelCount;
     bool createdCitySection = false;
     bool createdForestSection = false;
@@ -42,67 +37,58 @@ public class NewMonoBehaviourScript : MonoBehaviour
         GlobalMovement.leftSide = -27;
         GlobalMovement.rightSide = 27;
 
-
-        for (int i = 0; i < 1; i++)
+        if (passedIce != true)
         {
-            secNum = Random.Range(0, numOfIceSections);
-            GameObject newIceSection = Instantiate(iceSection[secNum], new Vector3(0, 0, 1330), Quaternion.identity);
-            iceSectionInstances.Add(newIceSection); // Add to the list
-            zPos = 1730;
+
+            for (int i = 0; i < 1; i++)
+            {
+                secNum = Random.Range(0, iceSection.Length);
+                GameObject newIceSection = Instantiate(iceSection[secNum], new Vector3(0, 0, 1300), Quaternion.identity);
+                iceSectionInstances.Add(newIceSection); // Add to the list
+                zPos = 1660;
+            }
         }
 
 
     }
-
-    IEnumerator DeactivateIce()
-    {
-        yield return new WaitForSeconds(1);
-        ice.SetActive(false);
-        passedIce = true;
-    }
-
-    IEnumerator DeactivateForest()
-    {
-        yield return new WaitForSeconds(1);
-        forest.SetActive(false);
-        passedForest = true;
-    }
-
     // Update is called once per frame
     void FixedUpdate()
     {
         if (GlobalMovement.endGame == false)
         {
-            
+
             //spawn points for different level sections
             if (player.transform.position.z < forestSpawnStart)
             {
                 levelCount = 1;
 
                 if (problemSolved == false)
-                { 
+                {
                     ice.SetActive(true);
                     passedIce = false;
-                    forest.SetActive(false);
+                    createdForestSection = false;
+                    //forest.SetActive(false);
                     passedForest = false;
-                    city.SetActive(false);
+                    //city.SetActive(false);
                     levelBorder1.transform.position = new Vector3(0, 0, 10000);
                     levelBorder2.transform.position = new Vector3(0, 0, 10000);
                     problemSolved = true;
                 }
             }
 
-            if (player.transform.position.z > forestSpawnStart)
+            if (player.transform.position.z > forestSpawnStart && player.transform.position.z < citySpawnStart)
             {
                 levelCount = 2;
+                forest.SetActive(true);
             }
 
             if (player.transform.position.z > citySpawnStart)
             {
                 levelCount = 3;
+                city.SetActive(true);
             }
 
-           
+
             //set boundaries for up-down movement in different levels 
             if (player.transform.position.z < levelBorder1.transform.position.z)
             {
@@ -110,24 +96,18 @@ public class NewMonoBehaviourScript : MonoBehaviour
                 GlobalMovement.topSide = -68;
             }
 
-            if (player.transform.position.z > levelBorder1.transform.position.z - 300)
+            if (player.transform.position.z > levelBorder1.transform.position.z - 100)
             {
                 GlobalMovement.bottomSide = -75;
-                GlobalMovement.topSide = 30;
-                if (passedIce == false)
-                {
-                    StartCoroutine(DeactivateIce());
-                }
+                GlobalMovement.topSide = 18;
+                passedIce = true;
             }
 
-            if (player.transform.position.z > levelBorder2.transform.position.z - 300)
+            if (player.transform.position.z > levelBorder2.transform.position.z - 200)
             {
                 GlobalMovement.bottomSide = -75;
                 GlobalMovement.topSide = 96;
-                if (passedForest == false)
-                {
-                    StartCoroutine(DeactivateForest());
-                }
+                passedForest = true;
             }
 
             if (citySectionInstances.Count == 0)
@@ -135,21 +115,51 @@ public class NewMonoBehaviourScript : MonoBehaviour
                 createdCitySection = false;
             }
 
-            if (forestSectionInstances.Count == 0)
-            {
-                createdForestSection = false;
-            }
-
             if (levelCount == 1)
             {
                 var lastIceClone = iceSectionInstances.Last();
                 if (lastIceClone.transform.position.z - player.transform.position.z < spawnPoint)
                 {
-                    secNum = Random.Range(0, numOfIceSections);
+                    secNum = Random.Range(0, iceSection.Length);
                     GameObject newIceSection = Instantiate(iceSection[secNum], new Vector3(0, 0, zPos), Quaternion.identity);
                     iceSectionInstances.Add(newIceSection); // Add to the list
-                    zPos += 70 * zCount;
+                    zPos += 350;
                 }
+            }
+
+
+            else if (levelCount == 2)
+            {
+                forest.SetActive(true);
+                if (passedForest == false)
+                {
+                    if (createdForestSection == false)
+                    {
+                        levelBorder1.transform.position = new Vector3(0, -68, zPos);
+                        secNum = 0;
+                        for (int i = 0; i < 3; i++)
+                        {
+                            GameObject newForestSection = Instantiate(forestSection[secNum], new Vector3(0, 0, zPos), Quaternion.identity);
+                            forestSectionInstances.Add(newForestSection); // Add to the list
+                            zPos += 350;
+                            secNum++;
+                        }
+                        createdForestSection = true;
+                    }
+
+                    if (createdForestSection == true)
+                    {
+                        var lastForestClone = forestSectionInstances.Last();
+                        if (lastForestClone.transform.position.z - player.transform.position.z < spawnPoint)
+                        {
+                            secNum = Random.Range(3, forestSection.Length);
+                            GameObject newForestSection = Instantiate(forestSection[secNum], new Vector3(0, 0, zPos), Quaternion.identity);
+                            forestSectionInstances.Add(newForestSection); // Add to the list
+                            zPos += 350;
+                        }
+                    }
+                }
+
             }
 
             else if (levelCount == 3)
@@ -157,10 +167,15 @@ public class NewMonoBehaviourScript : MonoBehaviour
                 city.SetActive(true);
                 if (createdCitySection == false)
                 {
-                    levelBorder2.transform.position = new Vector3(0, 25, zPos - 240);
-                    GameObject newCitySection = Instantiate(citySection[0], new Vector3(0, 0, zPos), Quaternion.identity);
-                    citySectionInstances.Add(newCitySection); // Add to the list
-                    zPos += 50 * zCount;
+                    levelBorder2.transform.position = new Vector3(0, 17, zPos);
+                    secNum = 0;
+                    for (int i = 0; i < 2; i++)
+                    {
+                        GameObject newCitySection = Instantiate(citySection[secNum], new Vector3(0, 0, zPos - 100), Quaternion.identity);
+                        citySectionInstances.Add(newCitySection); // Add to the list
+                        zPos += 250;
+                        secNum++;
+                    }
                     createdCitySection = true;
                 }
 
@@ -169,50 +184,12 @@ public class NewMonoBehaviourScript : MonoBehaviour
                     var lastCityClone = citySectionInstances.Last();
                     if (lastCityClone.transform.position.z - player.transform.position.z < spawnPoint)
                     {
-                        secNum = Random.Range(1, numOfCitySections);
+                        secNum = Random.Range(1, citySection.Length);
                         GameObject newCitySection = Instantiate(citySection[secNum], new Vector3(0, 0, zPos), Quaternion.identity);
                         citySectionInstances.Add(newCitySection); // Add to the list
-                        zPos += 50 * zCount;
+                        zPos += 250;
                     }
                 }
-            }
-
-            //else
-            //{
-            //    Instantiate(endSection, new Vector3(0, 0, zPos), Quaternion.identity);
-            //    zPos += 50 * zCount;
-            //}
-
-
-            else if (levelCount == 2)
-            {
-                forest.SetActive(true);
-                if (createdForestSection == false)
-                {
-                    levelBorder1.transform.position = new Vector3(0, -70, zPos + 100);
-                    secNum = 0;
-                    for (int i = 0; i < 3; i++)
-                    {
-                        GameObject newForestSection = Instantiate(forestSection[secNum], new Vector3(0, 0, zPos), Quaternion.identity);
-                        forestSectionInstances.Add(newForestSection); // Add to the list
-                        zPos += 70 * zCount;
-                        secNum++;
-                    }
-                    createdForestSection = true;
-                }
-
-                if (createdForestSection == true)
-                {
-                    var lastForestClone = forestSectionInstances.Last();
-                    if (lastForestClone.transform.position.z - player.transform.position.z < spawnPoint)
-                    {
-                        secNum = Random.Range(3, numOfForestSections);
-                        GameObject newForestSection = Instantiate(forestSection[secNum], new Vector3(0, 0, zPos), Quaternion.identity);
-                        forestSectionInstances.Add(newForestSection); // Add to the list
-                        zPos += 50 * zCount;
-                    }
-                }
-
             }
 
             // Check and destroy sections if player is far enough ahead
@@ -239,22 +216,22 @@ public class NewMonoBehaviourScript : MonoBehaviour
             for (int i = forestSectionInstances.Count - 1; i >= 0; i--) // Iterate backward to safely remove items
             {
                 GameObject destroyForestInstance = forestSectionInstances[i];
-                if (player.transform.position.z > destroyForestInstance.transform.position.z + 100)
+                if (player.transform.position.z > destroyForestInstance.transform.position.z + 200)
                 {
                     Destroy(destroyForestInstance);
                     forestSectionInstances.RemoveAt(i); // Remove from the list
                 }
             }
+
+            //if (iceSectionInstances.Count == 0 && passedIce == true)
+            //{
+            //    ice.SetActive(false);
+            //}
+
+            //if (forestSectionInstances.Count == 0 && passedForest == true)
+            //{
+            //    forest.SetActive(false);
+            //}
         }
     }
-
-    //IEnumerator GenerateSection()
-    //{
-    //    secNum = Random.Range(0, 3);
-    //    GameObject newSection = Instantiate(section[secNum], new Vector3(0, 0, zPos), Quaternion.identity);
-    //    sectionInstances.Add(newSection); // Add to the list
-    //    zPos += 50 * zCount;
-    //    yield return new WaitForSeconds(3);
-    //    creatingSection = false;
-    //}
 }
